@@ -16,9 +16,14 @@ body a {
   text-decoration: none;
 }
 
+body li {
+  list-style: none;
+}
+
 :root {
   --primary-color: #ffffff;
   --secondary-color: #000;
+  --secondary1-color: #292d33;
   --danger-color: #990000;
 }
 
@@ -52,8 +57,12 @@ body a {
   width: max-content;
 }
 
-.logo img{
-    height: 70px;
+.logo img {
+  height: 70px;
+}
+
+#hamburger-icon {
+  display: none;
 }
 
 #navbar ul {
@@ -88,30 +97,69 @@ body a {
   width: 100%;
 }
 
+/* hamburger ul */
+
+#hamburger-navbar {
+  display: none;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  background-color: var(--secondary1-color) ;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  flex-direction: column;
+  text-align: center;
+}
+
+.hamburger-nav-li {
+  color: var(--primary-color);
+  font-size: 18px;
+  padding: 5px 15px;
+  border-bottom: 3px solid var(--danger-color);
+}
+
+.hamburger-nav-item {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.hamburger-nav-item li{
+    margin: 15px 0;
+}
+
+#close-image{
+    position: fixed;
+    right: 50px;
+    top: 40px;
+}
+
 /* slider */
 
-.banner-content{
-    display: flex;
-    flex-direction: column;
-    max-width: 550px;
-    margin: 100px auto;
+.banner-content {
+  display: flex;
+  flex-direction: column;
+  max-width: 550px;
+  margin: 100px auto;
 }
 
-.banner-white-content{
-    color: var(--primary-color);
-    font-size: 80px;
+.banner-white-content {
+  color: var(--primary-color);
+  font-size: 80px;
 }
 
-.banner-white-content2{
-    display: flex;
-    justify-content: end;
+.banner-white-content2 {
+  display: flex;
+  justify-content: end;
 }
 
-.banner-red-content{
-    display: flex;
-    justify-content: center;
-    color: var(--danger-color);
-    font-size: 60px;
+.banner-red-content {
+  display: flex;
+  justify-content: center;
+  color: var(--danger-color);
+  font-size: 60px;
 }
 
 .wrapper-container {
@@ -178,7 +226,30 @@ body a {
 }
 
 @media only screen and (max-width: 600px) {
+  .logo img {
+    height: 50px;
+  }
+
+   #navbar ul{
+    display: none;
+  }
+
+  .logo-content {
+    font-size: 18px;
+  }
+
+  .hamburger-container {
+    display: flex;
+    align-items: center;
+  }
+
+  #hamburger-icon {
+    display: block;
+    height: 20px;
+  }
+
   #navbar ul {
+    display: none;
     flex-direction: column;
     text-align: center;
   }
@@ -193,7 +264,22 @@ body a {
     max-width: 500px;
   }
 
+  #navbar ul{
+    display: none;
+  }
+
+  .hamburger-container {
+    display: flex;
+    align-items: center;
+  }
+
+  #hamburger-icon {
+    display: block;
+    height: 25px;
+  }
+
   #navbar ul {
+    /* display: none; */
     flex-direction: column;
     text-align: center;
   }
