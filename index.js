@@ -61,7 +61,7 @@ productsList.forEach((item) => {
     </div>
     <div class="card-section2">
       <p class="card-section2-content1">${item.product}</p>
-      <p class="card-section2-content3">₨ ${item.price}</p>
+      <p class="card-section2-content3">PKR ${item.price}</p>
       <a href="#" class="card-section2-btn">Add to cart</a>
     </div>
   `;
