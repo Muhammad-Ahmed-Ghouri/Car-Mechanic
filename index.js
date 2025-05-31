@@ -1,13 +1,4 @@
 const navbar = document.getElementById("hamburger-navbar");
-let counter = 1;
-
-setInterval(() => {
-  document.getElementById("radio" + counter).checked = true;
-  counter++;
-  if (counter > 3) {
-    counter = 1;
-  }
-}, 5000);
 
 function navbarVisibility() {
   navbar.style.display = "flex";
@@ -66,7 +57,7 @@ productsList.forEach((item) => {
     <div class="card-section1">
       <div class="card-section1-image">
         <img src="${item.image}" alt="${item.product}" />
-      </div>
+        </div>
     </div>
     <div class="card-section2">
       <p class="card-section2-content1">${item.product}</p>
