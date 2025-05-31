@@ -257,6 +257,18 @@ body li {
   #navbar ul li {
     padding: 9px 0;
   }
+
+  #slider-container {
+    height: 500px;
+}
+
+    .banner-content{
+      max-width: 250px;
+  }
+
+  .banner-content h1{
+    font-size: 40px;
+  }
 }
 
 @media only screen and (min-width: 601px) and (max-width: 900px) {
@@ -278,15 +290,23 @@ body li {
     height: 25px;
   }
 
-  #navbar ul {
-    /* display: none; */
-    flex-direction: column;
-    text-align: center;
-  }
-
   #navbar ul li {
     padding: 9px 0;
   }
+
+  #slider-container {
+    height: 600px;
+}
+
+  .banner-content{
+      max-width: 350px;
+  }
+
+  .banner-content h1{
+    font-size: 50px;
+  }
+
+
 }
 
 @media only screen and (min-width: 901px) and (max-width: 1200px) {
@@ -297,4 +317,8 @@ body li {
   .nav-li {
     padding: 14px 16px;
   }
+
+    #slider-container {
+    height: 600px;
+}
 }
