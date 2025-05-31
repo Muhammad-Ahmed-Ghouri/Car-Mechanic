@@ -55,9 +55,7 @@ productsList.forEach((item) => {
 
   card.innerHTML = `
     <div class="card-section1">
-      <div class="card-section1-image">
-        <img src="${item.image}" alt="${item.product}" />
-        </div>
+        <img class="card-section1-image" src="${item.image}" alt="${item.product}" />
     </div>
     <div class="card-section2">
       <p class="card-section2-content1">${item.product}</p>
