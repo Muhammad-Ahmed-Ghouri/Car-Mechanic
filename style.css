@@ -20,6 +20,7 @@ body a {
   --primary-color: #ffffff;
   --primary1-color: #d9d9d9;
   --primary2-color: #d7d7d5;
+  --primary3-color: #e0e5ec;
   --secondary-color: #000;
   --secondary1-color: #292d33;
   --secondary2-color: #858e99;
@@ -249,7 +250,6 @@ body a {
 .card-section1 {
     overflow: hidden;
     height: 370px;
-    border-bottom: 1px solid var(--primary2-color);
 }
 
 .card-section1-image{
@@ -263,7 +263,7 @@ body a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: linear-gradient(to top, var(--secondary2-color), white);
+  background-color: var(--primary3-color);
   height: 130px;
   width: 100%;
   padding: 10px 15px 15px 15px;
