@@ -1,53 +1,17 @@
-const navbar = document.getElementById("hamburger-navbar");
-
-function navbarVisibility() {
-  navbar.style.display = "flex";
-}
-
-function closeVisibility() {
-  navbar.style.display = "none";
-}
-
-const productsList = [
-  {
-    id: 1,
-    product: "Rh20 1.5 Liter pet (pack of 6)",
-    price: 320,
-    image: "./assets/battery1.jpg",
-  },
-  {
-    id: 2,
-    product: "Rh20 500 ml pet (pack of 12)",
-    price: 320,
-    image: "./assets/battery2.webp",
-  },
-  {
-    id: 3,
-    product: "Classic purified(19 Liters)",
-    price: 80,
-    image: "./assets/battery3.jpeg",
-  },
-  {
-    id: 4,
-    product: "Premium Mineral Boosted(19 Liters)",
-    price: 100,
-    image: "./assets/battery1.jpg",
-  },
-  {
-    id: 5,
-    product: "Ozonated Mineral Boosted(19 Liters)",
-    price: 120,
-    image: "./assets/battery2.webp",
-  },
-  {
-    id: 6,
-    product: "Ozonated Mineral Boosted(19 Liters)",
-    price: 120,
-    image: "./assets/battery3.jpeg",
-  },
-];
+import { navbarVisibility } from "./products.js";
+import { closeVisibility } from "./products.js";
+import { productsList } from "./products.js";
 
 const container = document.getElementById("product-container");
+const cartButton = document.querySelector(".card-section2-btn");
+const count = document.querySelector(".item-count");
+console.log(count);
+
+// products which have selected
+const selectedProducts = [];
+
+window.navbarVisibility = navbarVisibility;
+window.closeVisibility = closeVisibility;
 
 productsList.forEach((item) => {
   const card = document.createElement("div");
@@ -57,12 +21,36 @@ productsList.forEach((item) => {
     <div class="card-section1">
         <img class="card-section1-image" src="${item.image}" alt="${item.product}" />
     </div>
-    <div class="card-section2">
+    <div onclick = "addItems(event)" class="card-section2">
       <p class="card-section2-content1">${item.product}</p>
       <p class="card-section2-content3">PKR ${item.price}</p>
-      <a href="#" class="card-section2-btn">Add to cart</a>
+      <a href="#" data-id = "${item.id}" onclick = "itemCount()" class="card-section2-btn">Add to cart</a>
     </div>
   `;
 
   container.appendChild(card);
 });
+
+// collecting data from every cart
+window.addItems = function (event) {
+  event.preventDefault();
+  const clickedElement = event.target;
+  const cartDetails = clickedElement.dataset.id;
+
+  productsList.forEach((i) => {
+    if (cartDetails === i.id.toString()) {
+      selectedProducts.push({
+        id: i.id,
+        product: i.product,
+        price: i.price,
+        image: i.image,
+      });
+    }
+  });
+  localStorage.setItem("cart", JSON.stringify(selectedProducts));
+};
+
+// counting items
+window.itemCount = function () {
+  count.style.visibility = "visible";
+};
