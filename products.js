@@ -1,3 +1,5 @@
+const countELements = document.querySelectorAll(".item-count");
+
 export const productsList = [
   {
     id: 1,
@@ -43,4 +45,11 @@ export function navbarVisibility() {
 
 export function closeVisibility() {
   document.getElementById("hamburger-navbar").style.display = "none";
+}
+
+export function itemCount(selectedProducts) {
+  countELements.forEach((count) => {
+    count.style.visibility = "visible";
+    count.innerHTML = selectedProducts;
+  });
 }
