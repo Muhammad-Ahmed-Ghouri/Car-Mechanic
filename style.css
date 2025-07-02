@@ -244,6 +244,7 @@ body a {
 
 .wrapper-container {
   width: 100vw;
+  height: 500px;
   overflow: hidden;
 }
 
@@ -716,6 +717,10 @@ body a {
     font-size: 40px;
   }
 
+  .wrapper-container {
+    height: 300px;
+  }
+
   .cards {
     padding: 60px 30px;
     margin: auto;
@@ -873,6 +878,10 @@ body a {
     right: unset;
     top: 7px;
     margin: 5px 0 0 -5px;
+  }
+
+  .wrapper-container {
+    height: 400px;
   }
 
   .home-banner-content,
