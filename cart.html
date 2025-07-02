@@ -1,99 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Carclinic4u - Cart</title>
-    <link rel="stylesheet" href="./style.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Asap%3A400%2C400i%2C500%2C500i%2C600%2C600i%2C700%2C700i%7CRoboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto%20Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&subset=latin%2Clatin-ext&display=swap"
-    />
-  </head>
-  <body style="background-color: #e3efff;">
-    <div class="main-container">
-      <div class="nav-container">
-        <nav id="navbar">
-          <div class="logo">
-            <div onclick="navbarVisibility()" class="hamburger-container">
-              <img id="hamburger-icon" src="./assets/hamburger.png" alt="" />
-            </div>
-            <a href="./index.html">
-              <p class="logo-content">Carclinic4u</p>
-            </a>
-            <a class="logo-icon" href="./index.html">
-              <img src="./assets/logo.png" alt="" />
-            </a>
-          </div>
-          <ul>
-            <div class="nav-item">
-              <li><a class="nav-li" href="/index.html">HOME</a></li>
-              <div class="bottom-line"></div>
-            </div>
-            <div class="nav-item">
-              <li>
-                <a class="nav-li" href="/about.html">ABOUT US</a>
-              </li>
-              <div class="bottom-line"></div>
-            </div>
-            <div class="nav-item">
-              <li>
-                <a class="nav-li" href="/service.html">SERVICES</a>
-              </li>
-              <div class="bottom-line"></div>
-            </div>
-            <div class="nav-item">
-              <li>
-                <a class="nav-li" href="/contact.html">CONTACT US</a>
-              </li>
-              <div class="bottom-line"></div>
-            </div>
-          </ul>
-          <a href="./cart.html" class="cart-icon-container-small-screen">
-            <div class="item-count"></div>
-            <img class="cart-icon" src="./assets/cart-icon.png" alt="" />
-          </a>
-        </nav>
 
-        <nav id="hamburger-navbar">
-          <div onclick="closeVisibility()" id="close-image">
-            <img src="./assets/close.png" alt="" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carclinic4u - Cart</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Asap%3A400%2C400i%2C500%2C500i%2C600%2C600i%2C700%2C700i%7CRoboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto%20Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&subset=latin%2Clatin-ext&display=swap" />
+</head>
+
+<body style="background-color: rgb(241 244 248);">
+  <div class="main-container">
+    <div class="navbar-container nav-container">
+      <nav id="navbar">
+        <div class="logo">
+          <div onclick="navbarVisibility()" class="hamburger-container">
+            <img id="hamburger-icon" src="./assets/hamburger.png" alt="" />
           </div>
-          <ul>
-            <div class="hamburger-nav-item">
-              <li><a class="hamburger-nav-li" href="/index.html">HOME</a></li>
-            </div>
-            <div class="hamburger-nav-item">
-              <li>
-                <a class="hamburger-nav-li" href="/about.html">ABOUT US</a>
-              </li>
-            </div>
-            <div class="hamburger-nav-item">
-              <li>
-                <a class="hamburger-nav-li" href="/service.html">SERVICES</a>
-              </li>
-            </div>
-            <div class="hamburger-nav-item">
-              <li>
-                <a class="hamburger-nav-li" href="/contact.html">CONTACT US</a>
-              </li>
-            </div>
-          </ul>
-        </nav>
-        <div>
-          <a href="./cart.html" class="cart-icon-container">
-            <div class="item-count"></div>
-            <img class="cart-icon" src="./assets/cart-icon.png" alt="" />
+          <a href="./index.html">
+            <p class="logo-content">Carclinic4u</p>
+          </a>
+          <a class="logo-icon" href="./index.html">
+            <img src="./assets/logo.png" alt="" />
           </a>
         </div>
-      </div>
+        <ul>
+          <div class="nav-item">
+            <li><a class="nav-li" href="/index.html">HOME</a></li>
+            <div class="bottom-line"></div>
+          </div>
+          <div class="nav-item">
+            <li>
+              <a class="nav-li" href="/about.html">ABOUT US</a>
+            </li>
+            <div class="bottom-line"></div>
+          </div>
+          <div class="nav-item">
+            <li>
+              <a class="nav-li" href="/service.html">SERVICES</a>
+            </li>
+            <div class="bottom-line"></div>
+          </div>
+          <div class="nav-item">
+            <li>
+              <a class="nav-li" href="/contact.html">CONTACT US</a>
+            </li>
+            <div class="bottom-line"></div>
+          </div>
+        </ul>
+        <div>
+          <a href="./cart.html" class="cart-icon-container-small-screen">
+            <span class="item-count">2</span>
+            <img class="cart-icon" src="./assets/cart-icon.png" alt="">
+          </a>
+        </div>
+      </nav>
 
-      <div class="banner">
-        <h1 class="banner-content">CART SUMMARY</h1>
-      </div>
+      <nav id="hamburger-navbar">
+        <div onclick="closeVisibility()" id="close-image">
+          <img src="./assets/close.png" alt="" />
+        </div>
+        <ul>
+          <div class="hamburger-nav-item">
+            <li><a class="hamburger-nav-li" href="/index.html">HOME</a></li>
+          </div>
+          <div class="hamburger-nav-item">
+            <li>
+              <a class="hamburger-nav-li" href="/about.html">ABOUT US</a>
+            </li>
+          </div>
+          <div class="hamburger-nav-item">
+            <li>
+              <a class="hamburger-nav-li" href="/service.html">SERVICES</a>
+            </li>
+          </div>
+          <div class="hamburger-nav-item">
+            <li>
+              <a class="hamburger-nav-li" href="/contact.html">CONTACT US</a>
+            </li>
+          </div>
+        </ul>
+      </nav>
+
+      <a href="./cart.html" class="cart-icon-container">
+        <span class="item-count"></span>
+        <img class="cart-icon" src="./assets/cart-icon.png" alt="">
+      </a>
     </div>
 
-     <div class="container footer-container">
+    <div class="banner">
+      <h1 class="banner-content">CART SUMMARY</h1>
+    </div>
+  </div>
+
+  <div class="cart-summary">
+    <p class="items-count-text"></p>
+    <div class="carts-section">
+
+      <div class="carts-section1">
+        <!-- carts will be placed here -->
+      </div>
+      <div class="carts-section2"></div>
+    </div>
+  </div>
+
+  <div class="container footer-container">
     <footer id="footer-section">
       <div class="footer-section-box1">
         <div class="footer-section-box1-content1">
@@ -190,5 +202,6 @@
   </div>
 
   <script type="module" src="./cart.js"></script>
-  </body>
+</body>
+
 </html>
