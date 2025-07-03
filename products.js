@@ -6,37 +6,37 @@ const closeNav = document.getElementById("close-image");
 export const productsList = [
   {
     id: 1,
-    product: "Rh20 1.5 Liter pet (pack of 6)",
+    product: "VoltEdge ProCell 3000",
     price: 320,
     image: "./assets/battery1.jpg",
   },
   {
     id: 2,
-    product: "Rh20 500 ml pet (pack of 12)",
+    product: "LithioMax Power+",
     price: 320,
     image: "./assets/battery2.webp",
   },
   {
     id: 3,
-    product: "Classic purified(19 Liters)",
+    product: "Energix UltraCharge",
     price: 80,
     image: "./assets/battery3.jpeg",
   },
   {
     id: 4,
-    product: "Premium Mineral Boosted(19 Liters)",
+    product: "PowerNest TurboCore",
     price: 100,
     image: "./assets/battery1.jpg",
   },
   {
     id: 5,
-    product: "Ozonated Mineral Boosted(19 Liters)",
+    product: "ZenVolt SmartCell",
     price: 120,
     image: "./assets/battery2.webp",
   },
   {
     id: 6,
-    product: "Ozonated Mineral Boosted(19 Liters)",
+    product: "TitanCore FusionX",
     price: 120,
     image: "./assets/battery3.jpeg",
   },
