@@ -1,4 +1,7 @@
 const countELements = document.querySelectorAll(".item-count");
+const hamburger = document.getElementById("hamburger-navbar");
+const openNav = document.querySelector(".hamburger-container");
+const closeNav = document.getElementById("close-image");
 
 export const productsList = [
   {
@@ -40,16 +43,24 @@ export const productsList = [
 ];
 
 export function navbarVisibility() {
-  document.getElementById("hamburger-navbar").style.display = "flex";
+  hamburger.style.display = "flex";
 }
 
+openNav.addEventListener("click", navbarVisibility);
+
 export function closeVisibility() {
-  document.getElementById("hamburger-navbar").style.display = "none";
+  hamburger.style.display = "none";
 }
+
+closeNav.addEventListener("click", closeVisibility);
 
 export function itemCount(selectedProducts) {
   countELements.forEach((count) => {
-    count.style.visibility = "visible";
-    count.innerHTML = selectedProducts;
+    if (selectedProducts === 0) {
+      count.style.visibility = "hidden";
+    } else {
+      count.style.visibility = "visible";
+      count.innerHTML = selectedProducts;
+    }
   });
 }

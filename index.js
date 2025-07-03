@@ -1,17 +1,14 @@
-import { navbarVisibility } from "./products.js";
-import { closeVisibility } from "./products.js";
 import { productsList } from "./products.js";
 import { itemCount } from "./products.js";
 
 const container = document.getElementById("product-container");
+const message = document.querySelector(".show-message");
+const messageContent = document.querySelector(".show-message-text");
 
 // products which have selected
 const selectedProducts = JSON.parse(localStorage.getItem("cart")) || [];
 itemCount(selectedProducts.length);
 console.log(selectedProducts);
-
-window.navbarVisibility = navbarVisibility;
-window.closeVisibility = closeVisibility;
 
 // creating carts on home page
 productsList.forEach((item) => {
@@ -25,7 +22,7 @@ productsList.forEach((item) => {
     <div class="card-section2">
       <p class="card-section2-content1">${item.product}</p>
       <p class="card-section2-content3">PKR ${item.price}</p>
-      <a href="#" data-id = "${item.id}" onclick = "addItems(event)" class="card-section2-btn">Add to cart</a>
+      <a href="#" data-id = "${item.id}" class="card-section2-btn">Add to cart</a>
     </div>
   `;
 
@@ -33,7 +30,7 @@ productsList.forEach((item) => {
 });
 
 // collecting data from every cart
-window.addItems = function (event) {
+function addItems(event) {
   event.preventDefault();
   const clickedElement = event.target;
   const cartDetails = clickedElement.dataset.id;
@@ -52,4 +49,17 @@ window.addItems = function (event) {
   // counting items which have selected
   itemCount(selectedProducts.length);
   console.log(selectedProducts);
-};
+}
+
+container.addEventListener("click", function (event) {
+  if (event.target.classList.contains("card-section2-btn")) {
+    event.preventDefault(); // stop anchor default action
+    addItems(event); // pass the event to use dataset.id
+    message.style.opacity = "1";
+    messageContent.innerHTML = `You have added ${selectedProducts.length} cart successfully!`;
+
+    setTimeout(() => {
+      message.style.opacity = "0";
+    }, 3000);
+  }
+});

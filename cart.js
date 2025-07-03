@@ -1,12 +1,8 @@
-import { navbarVisibility } from "./products.js";
-import { closeVisibility } from "./products.js";
 import { itemCount } from "./products.js";
 
 const itemsCountText = document.querySelector(".items-count-text");
 const cartsContainer = document.querySelector(".carts-section1");
-
-window.navbarVisibility = navbarVisibility;
-window.closeVisibility = closeVisibility;
+const totalItems = document.querySelector(".item-count");
 
 const selectedProducts = JSON.parse(localStorage.getItem("cart"));
 
@@ -35,7 +31,7 @@ selectedProducts.forEach((item) => {
                   <p class="name-text">${item.product}</p>
                   <p class="price-text">PKR ${item.price}</p>
                 </div>
-                <button class="cart-content1-button">
+                <button onclick="removeProduct(${item.id})" class="cart-content1-button">
                   <img src="./assets/trash-bin.png" alt="" class="button-icon">
                   <p class="button-text">DELETE</p>
                 </button>
@@ -60,3 +56,23 @@ selectedProducts.forEach((item) => {
           </div>`;
   cartsContainer.appendChild(carts);
 });
+
+function removeProduct(id) {
+  const index = selectedProducts.findIndex((product) => {
+    return product.id === id;
+  });
+  if (index != -1) {
+    selectedProducts.splice(index, 1);
+  }
+
+  const cartElement = document.querySelector(`.cart${id}`);
+
+  cartElement.remove();
+  itemsCountTextUpdate(selectedProducts.length);
+
+  itemCount(selectedProducts.length);
+
+  localStorage.setItem("cart", JSON.stringify(selectedProducts));
+}
+
+window.removeProduct = removeProduct;

@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Asap%3A400%2C400i%2C500%2C500i%2C600%2C600i%2C700%2C700i%7CRoboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto%20Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&subset=latin%2Clatin-ext&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
 <body>
@@ -16,7 +17,7 @@
     <div class="navbar-container">
       <nav id="navbar">
         <div class="logo">
-          <div onclick="navbarVisibility()" class="hamburger-container">
+          <div class="hamburger-container">
             <img id="hamburger-icon" src="./assets/hamburger.png" alt="" />
           </div>
           <a href="./index.html">
@@ -59,7 +60,7 @@
       </nav>
 
       <nav id="hamburger-navbar">
-        <div onclick="closeVisibility()" id="close-image">
+        <div id="close-image">
           <img src="./assets/close.png" alt="" />
         </div>
         <ul>
@@ -110,6 +111,10 @@
       <!-- Cards will be placed here -->
     </div>
   </section>
+
+  <div class="show-message">
+    <p class="show-message-text"></p>
+  </div>
 
   <div class="container footer-container">
     <footer id="footer-section">
@@ -208,6 +213,8 @@
   </div>
 
   <script type="module" src="./index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  
 </body>
 
 </html>

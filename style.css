@@ -376,6 +376,20 @@ body a {
   box-shadow: 0 0 5px var(--danger-color);
 }
 
+.show-message{
+  opacity: 0;
+    position: fixed;
+    bottom: 10px;
+    right: 30px;
+    font-size: 17px;
+    width: 320px;
+    padding: 10px 0;
+    background-color: #169c16;
+    color: white;
+    transition: all 1s;
+    text-align: center;
+}
+
 /* footer */
 
 .footer-container {
@@ -640,12 +654,13 @@ body a {
   cursor: pointer;
 }
 
-#quantity-calculator-field::-webkit-outer-spin-button,
-#quantity-calculator-field::-webkit-inner-spin-button {
+#quantity-calculator-field[type="number"]::-webkit-outer-spin-button,
+#quantity-calculator-field[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
 #quantity-calculator-field[type="number"] {
+  appearance: none;
   -moz-appearance: textfield;
 }
 
@@ -845,6 +860,14 @@ body a {
     display: none;
   }
 
+      .show-message {
+    font-size: 12px;
+        width: 150px;
+        padding: 10px 10px;
+        right: 10px;
+}
+
+
 }
 
 @media only screen and (min-width: 601px) and (max-width: 900px) {
@@ -918,6 +941,12 @@ body a {
     padding: 12px 30px;
     font-size: 17px;
   }
+
+    .show-message {
+    font-size: 12px;
+    width: 250px;
+    padding: 10px 0px;
+}
 
   #footer-section {
     grid-template-columns: repeat(1, 1fr);
@@ -1027,6 +1056,12 @@ body a {
     padding: 80px 0;
     grid-template-columns: 1fr 1fr;
   }
+
+  .show-message {
+    font-size: 15px;
+    width: 290px;
+    padding: 10px 0px;
+}
 
   #footer-section {
     grid-template-columns: repeat(3, 1fr);
