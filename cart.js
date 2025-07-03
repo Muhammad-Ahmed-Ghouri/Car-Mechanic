@@ -31,7 +31,7 @@ selectedProducts.forEach((item) => {
                   <p class="name-text">${item.product}</p>
                   <p class="price-text">PKR ${item.price}</p>
                 </div>
-                <button onclick="removeProduct(${item.id})" class="cart-content1-button">
+                <button data-id="${item.id}" class="cart-content1-button">
                   <img src="./assets/trash-bin.png" alt="" class="button-icon">
                   <p class="button-text">DELETE</p>
                 </button>
@@ -75,4 +75,10 @@ function removeProduct(id) {
   localStorage.setItem("cart", JSON.stringify(selectedProducts));
 }
 
-window.removeProduct = removeProduct;
+document.addEventListener("click", (e) => {
+  const deleteButton = e.target.closest(".cart-content1-button");
+  if (deleteButton) {
+    const id = parseInt(deleteButton.dataset.id);
+    removeProduct(id);
+  }
+});
