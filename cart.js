@@ -1,4 +1,4 @@
-import { itemCount } from "./products.js";
+import { itemCount, productsList } from "./products.js";
 
 const itemsCountText = document.querySelector(".items-count-text");
 const cartsContainer = document.querySelector(".carts-section1");
@@ -42,14 +42,14 @@ selectedProducts.forEach((item) => {
                 <div class="cart-content2-quantity">
                   <p class="quantity-text">Quantity:</p>
                   <div class="quantity-calculator">
-                    <img src="./assets/minus-sign.png" alt="" class="quantity-subtract">
+                    <img data-id="${item.id}" src="./assets/minus-sign.png" alt="" class="quantity-subtract">
                     <input name="quantity" value="${item.quantity}" class="quantity-calculator-field" type="number">
-                    <img src="./assets/plus-sign.png" alt="" class="quantity-addition">
+                    <img data-id="${item.id}" src="./assets/plus-sign.png" alt="" class="quantity-addition">
                   </div>
                 </div>
 
                 <div class="cart-content2-subtotal">
-                  <p class="subtotal-text">item subtotal: <strong>PKR ${item.price}</strong></p>
+                  <p class="subtotal-text">item subtotal: <strong class="subtotal-price-text" >PKR ${item.price}</strong></p>
                 </div>
               </div>
 
@@ -77,8 +77,56 @@ function removeProduct(id) {
 
 document.addEventListener("click", (e) => {
   const deleteButton = e.target.closest(".cart-content1-button");
+  const quantityIncrease = document.querySelector(".quantity-addition");
+  const quantityDecrease = document.querySelector(".quantity-subtract");
   if (deleteButton) {
     const id = parseInt(deleteButton.dataset.id);
     removeProduct(id);
+  }
+
+  if (e.target.classList.contains("quantity-addition")) {
+    const id = parseInt(e.target.dataset.id);
+    const product = selectedProducts.find((product) => product.id === id);
+    if (product) {
+      product.quantity += 1;
+
+      // update input value
+      const input = e.target.parentElement.querySelector(
+        ".quantity-calculator-field"
+      );
+      input.value = product.quantity;
+
+      // update subtotal value
+      const subtotal = e.target
+        .closest(".cart-content2")
+        .querySelector(".subtotal-price-text");
+      let price = product.quantity * product.price;
+      subtotal.textContent = `PKR ${price}`;
+
+      localStorage.setItem("cart", JSON.stringify(selectedProducts));
+    }
+  }
+
+  if (e.target.classList.contains("quantity-subtract")) {
+    const id = parseInt(e.target.dataset.id);
+    const product = selectedProducts.find((product) => product.id === id);
+    if (product && product.quantity >= 1) {
+      product.quantity -= 1;
+
+      // update input value
+      const input = e.target.parentElement.querySelector(
+        ".quantity-calculator-field"
+      );
+      input.value = product.quantity;
+
+      // update subtotal value
+      const subtotal = e.target
+        .closest(".cart-content2")
+        .querySelector(".subtotal-price-text");
+      let price = product.quantity * product.price;
+      subtotal.textContent = `PKR ${price}`;
+
+      localStorage.setItem("cart", JSON.stringify(selectedProducts));
+    }
   }
 });

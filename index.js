@@ -42,9 +42,9 @@ function addItems(event) {
     (item) => item.id === parseInt(cartId)
   );
 
-  if (existingItem)
+  if (existingItem) {
     existingItem.quantity += 1; // increase quantity if already exist
-  else {
+  } else {
     selectedProducts.push({
       id: product.id,
       product: product.product,
