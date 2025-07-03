@@ -2,7 +2,6 @@ import { itemCount, productsList } from "./products.js";
 
 const itemsCountText = document.querySelector(".items-count-text");
 const cartsContainer = document.querySelector(".carts-section1");
-const totalItems = document.querySelector(".item-count");
 
 const selectedProducts = JSON.parse(localStorage.getItem("cart"));
 
@@ -77,13 +76,12 @@ function removeProduct(id) {
 
 document.addEventListener("click", (e) => {
   const deleteButton = e.target.closest(".cart-content1-button");
-  const quantityIncrease = document.querySelector(".quantity-addition");
-  const quantityDecrease = document.querySelector(".quantity-subtract");
   if (deleteButton) {
     const id = parseInt(deleteButton.dataset.id);
     removeProduct(id);
   }
 
+  // when click on plus icon
   if (e.target.classList.contains("quantity-addition")) {
     const id = parseInt(e.target.dataset.id);
     const product = selectedProducts.find((product) => product.id === id);
@@ -107,6 +105,7 @@ document.addEventListener("click", (e) => {
     }
   }
 
+  // when click on minus icon
   if (e.target.classList.contains("quantity-subtract")) {
     const id = parseInt(e.target.dataset.id);
     const product = selectedProducts.find((product) => product.id === id);
