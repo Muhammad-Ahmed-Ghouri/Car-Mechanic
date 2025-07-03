@@ -29,22 +29,31 @@ productsList.forEach((item) => {
   container.appendChild(card);
 });
 
-// collecting data from every cart
+// add items in carts summary
 function addItems(event) {
   event.preventDefault();
   const clickedElement = event.target;
-  const cartDetails = clickedElement.dataset.id;
+  const cartId = clickedElement.dataset.id;
 
-  productsList.forEach((i) => {
-    if (cartDetails === i.id.toString()) {
-      selectedProducts.push({
-        id: i.id,
-        product: i.product,
-        price: i.price,
-        image: i.image,
-      });
-    }
-  });
+  const product = productsList.find(
+    (product) => product.id === parseInt(cartId)
+  );
+  const existingItem = selectedProducts.find(
+    (item) => item.id === parseInt(cartId)
+  );
+
+  if (existingItem)
+    existingItem.quantity += 1; // increase quantity if already exist
+  else {
+    selectedProducts.push({
+      id: product.id,
+      product: product.product,
+      price: product.price,
+      image: product.image,
+      quantity: 1,
+    });
+  }
+
   localStorage.setItem("cart", JSON.stringify(selectedProducts));
   // counting items which have selected
   itemCount(selectedProducts.length);
