@@ -43,13 +43,13 @@ selectedProducts.forEach((item) => {
                   <p class="quantity-text">Quantity:</p>
                   <div class="quantity-calculator">
                     <img src="./assets/minus-sign.png" alt="" class="quantity-subtract">
-                    <input id="quantity-calculator-field" type="number">
+                    <input name="quantity" class="quantity-calculator-field" type="number">
                     <img src="./assets/plus-sign.png" alt="" class="quantity-addition">
                   </div>
                 </div>
 
                 <div class="cart-content2-subtotal">
-                  <p class="subtotal-text">item subtotal: <strong>PKR 120</strong></p>
+                  <p class="subtotal-text">item subtotal: <strong>PKR ${item.price}</strong></p>
                 </div>
               </div>
 
