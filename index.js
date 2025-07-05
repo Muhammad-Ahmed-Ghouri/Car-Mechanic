@@ -70,5 +70,6 @@ container.addEventListener("click", function (event) {
     setTimeout(() => {
       message.style.opacity = "0";
     }, 3000);
+    // console.log(selectedProducts);
   }
 });

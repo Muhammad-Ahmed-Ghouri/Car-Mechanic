@@ -1,10 +1,11 @@
-import { itemCount, productsList } from "./products.js";
+import { itemCount } from "./products.js";
 
 const itemsCountText = document.querySelector(".items-count-text");
 const cartsContainer = document.querySelector(".carts-section1");
 const spinContainer = document.querySelector(".cart-update-loader");
-
 const selectedProducts = JSON.parse(localStorage.getItem("cart"));
+
+// const finalCartsSummary = [totalItems, itemsSubtotal, delivery, totalAmount];
 
 localStorage.setItem("cart", JSON.stringify(selectedProducts));
 
@@ -102,6 +103,7 @@ document.addEventListener("click", (e) => {
       removeProduct(id);
       hideLoad();
     }, 2000);
+    console.log(selectedProducts);
   }
 
   // when click on plus icon
@@ -128,6 +130,7 @@ document.addEventListener("click", (e) => {
         localStorage.setItem("cart", JSON.stringify(selectedProducts));
         hideLoad();
       }, 2000);
+      console.log(selectedProducts);
     }
   }
 
@@ -156,6 +159,7 @@ document.addEventListener("click", (e) => {
 
         hideLoad();
       }, 2000);
+      console.log(selectedProducts);
     }
   }
 });
@@ -181,7 +185,6 @@ document.addEventListener("input", (e) => {
 
       hideLoad();
     }, 2000);
+    console.log(selectedProducts);
   }
 });
-
-//total carts summary
