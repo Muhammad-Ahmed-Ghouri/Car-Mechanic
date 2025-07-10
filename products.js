@@ -36,9 +36,33 @@ export const productsList = [
   },
   {
     id: 6,
-    product: "TitanCore FusionX",
-    price: 120,
+    product: "Osaka",
+    price: 755,
     image: "./assets/battery3.jpeg",
+  },
+  {
+    id: 7,
+    product: "Volta",
+    price: 870,
+    image: "./assets/battery1.jpg",
+  },
+  {
+    id: 8,
+    product: "Daewoo",
+    price: 990,
+    image: "./assets/battery2.webp",
+  },
+  {
+    id: 9,
+    product: "SF Sonic",
+    price: 650,
+    image: "./assets/battery3.jpeg",
+  },
+  {
+    id: 10,
+    product: "AGS (Atlas Group)",
+    price: 240,
+    image: "./assets/battery1.jpg",
   },
 ];
 
@@ -63,4 +87,16 @@ export function itemCount(selectedProducts) {
       count.innerHTML = selectedProducts;
     }
   });
+}
+
+const spinContainer = document.querySelector(".cart-update-loader");
+
+export function spinLoad() {
+  spinContainer.style.visibility = "visible";
+  spinContainer.style.opacity = "1";
+}
+
+export function hideLoad() {
+  spinContainer.style.visibility = "hidden";
+  spinContainer.style.opacity = "0";
 }

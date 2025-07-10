@@ -1,11 +1,12 @@
-import { itemCount } from "./products.js";
+import { itemCount, spinLoad, hideLoad } from "./products.js";
 
 const itemsCountText = document.querySelector(".items-count-text");
 const cartsContainer = document.querySelector(".carts-section1");
-const spinContainer = document.querySelector(".cart-update-loader");
 const selectedProducts = JSON.parse(localStorage.getItem("cart"));
 
-// const finalCartsSummary = [totalItems, itemsSubtotal, delivery, totalAmount];
+const finalCartsSummary = [
+  { totalQuantity: 0, subtotalAmount: 0, finalAmount: 0 },
+];
 
 localStorage.setItem("cart", JSON.stringify(selectedProducts));
 
@@ -16,16 +17,6 @@ function itemsCountTextUpdate(selectedProducts) {
 }
 
 itemsCountTextUpdate(selectedProducts.length);
-
-function spinLoad() {
-  spinContainer.style.visibility = "visible";
-  spinContainer.style.opacity = "1";
-}
-
-function hideLoad() {
-  spinContainer.style.visibility = "hidden";
-  spinContainer.style.opacity = "0";
-}
 
 itemCount(selectedProducts.length);
 
@@ -102,6 +93,9 @@ document.addEventListener("click", (e) => {
     setTimeout(() => {
       removeProduct(id);
       hideLoad();
+
+      // render cart summary
+      renderCart();
     }, 2000);
     console.log(selectedProducts);
   }
@@ -127,8 +121,16 @@ document.addEventListener("click", (e) => {
           .querySelector(".subtotal-price-text");
         let price = product.quantity * product.price;
         subtotal.textContent = `PKR ${price}`;
+
+        // changing subtotal value from array
+        product.subtotal = price;
+
+        // set data in web browser
         localStorage.setItem("cart", JSON.stringify(selectedProducts));
         hideLoad();
+
+        // render cart summary
+        renderCart();
       }, 2000);
       console.log(selectedProducts);
     }
@@ -149,15 +151,23 @@ document.addEventListener("click", (e) => {
         );
         input.value = product.quantity;
 
-        // update subtotal value
+        // update subtotal value from UI
         const subtotal = e.target
           .closest(".cart-content2")
           .querySelector(".subtotal-price-text");
         let price = product.quantity * product.price;
         subtotal.textContent = `PKR ${price}`;
+
+        // changing subtotal value from array
+        product.subtotal = price;
+
+        // set data in web browser
         localStorage.setItem("cart", JSON.stringify(selectedProducts));
 
         hideLoad();
+
+        // render cart summary
+        renderCart();
       }, 2000);
       console.log(selectedProducts);
     }
@@ -180,11 +190,40 @@ document.addEventListener("input", (e) => {
         product.quantity = parseInt(e.target.value);
         let price = product.price * product.quantity;
         subtotal.textContent = `PKR ${price}`;
+
+        // changing subtotal value from array
+        product.subtotal = price;
+
+        // set data in web browser
         localStorage.setItem("cart", JSON.stringify(selectedProducts));
       }
 
       hideLoad();
+
+      // render cart summary
+      renderCart();
     }, 2000);
     console.log(selectedProducts);
   }
 });
+
+// creating carts summary
+
+function renderCart() {
+  const finalData = JSON.parse(localStorage.getItem("cart"));
+  const productsQuantity = document.querySelector(".content1-text2");
+  const productsSubtotal = document.querySelector(".content2-text2");
+  const customerTotal = document.querySelector(".content4-text2");
+
+  const index = 0;
+
+  let product = finalData[index];
+  finalCartsSummary[index].totalQuantity += product.quantity;
+  finalCartsSummary[index].subtotalAmount += product.subtotal;
+  finalCartsSummary[index].finalAmount += product.subtotal;
+
+  productsQuantity.textContent = finalCartsSummary[index].totalQuantity;
+  productsSubtotal.textContent = finalCartsSummary[index].subtotalAmount;
+  customerTotal.textContent = finalCartsSummary[index].finalAmount;
+  console.log(finalCartsSummary);
+}

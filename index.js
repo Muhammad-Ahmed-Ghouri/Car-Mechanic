@@ -1,5 +1,4 @@
-import { productsList } from "./products.js";
-import { itemCount } from "./products.js";
+import { productsList, itemCount } from "./products.js";
 
 const container = document.getElementById("product-container");
 const message = document.querySelector(".show-message");
@@ -44,6 +43,7 @@ function addItems(event) {
 
   if (existingItem) {
     existingItem.quantity += 1; // increase quantity if already exist
+    existingItem.subtotal = existingItem.price * existingItem.quantity;
   } else {
     selectedProducts.push({
       id: product.id,
@@ -51,6 +51,7 @@ function addItems(event) {
       price: product.price,
       image: product.image,
       quantity: 1,
+      subtotal: product.price,
     });
   }
 
@@ -70,6 +71,5 @@ container.addEventListener("click", function (event) {
     setTimeout(() => {
       message.style.opacity = "0";
     }, 3000);
-    // console.log(selectedProducts);
   }
 });
