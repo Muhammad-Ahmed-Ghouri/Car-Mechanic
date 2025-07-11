@@ -1,6 +1,6 @@
 const countELements = document.querySelectorAll(".item-count");
 const hamburger = document.getElementById("hamburger-navbar");
-const openNav = document.querySelector(".hamburger-container");
+const hamburgerIcon = document.querySelector(".hamburger-container");
 const closeNav = document.getElementById("close-image");
 
 export const productsList = [
@@ -66,17 +66,13 @@ export const productsList = [
   },
 ];
 
-export function navbarVisibility() {
-  hamburger.style.display = "flex";
-}
-
-openNav.addEventListener("click", navbarVisibility);
-
-export function closeVisibility() {
-  hamburger.style.display = "none";
-}
-
-closeNav.addEventListener("click", closeVisibility);
+document.addEventListener("click", (e) => {
+  if (hamburgerIcon.contains(e.target) || hamburger.contains(e.target)) {
+    hamburger.classList.toggle("active");
+  } else {
+    hamburger.classList.remove("active");
+  }
+});
 
 export function itemCount(selectedProducts) {
   countELements.forEach((count) => {
