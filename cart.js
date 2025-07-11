@@ -1,4 +1,4 @@
-import { itemCount, spinLoad, hideLoad } from "./products.js";
+import { itemCount, spinLoad, hideLoad, observer } from "./products.js";
 
 const itemsCountText = document.querySelector(".items-count-text");
 const cartsContainer = document.querySelector(".carts-section1");
@@ -227,3 +227,11 @@ function renderCart() {
   customerTotal.textContent = finalCartsSummary[index].finalAmount;
   console.log(finalCartsSummary);
 }
+
+// for animatioon
+
+const animateHeading = document.querySelectorAll(".scaleAnimation");
+const animateLogo = document.querySelectorAll(".animated-logo");
+
+animateHeading.forEach((heading) => observer.observe(heading));
+animateLogo.forEach((logo) => observer.observe(logo));

@@ -216,7 +216,6 @@ body a {
 .banner {
   display: flex;
   flex-direction: column;
-  max-width: 550px;
   margin: 80px auto;
 }
 
@@ -232,16 +231,27 @@ body a {
   color: var(--primary-color);
 }
 
-.banner-white-content2 {
-  display: flex;
-  justify-content: end;
-}
-
-.banner-red-content,
 .banner-content {
   display: flex;
   justify-content: center;
+  color: var(--blue3-color);
+}
+
+.banner-first-heading,.banner-second-heading,.banner-third-heading {
+  display: flex;
+  justify-content: center;
+}
+
+.banner-first-heading {
+  margin-right: 340px;
+}
+
+.banner-second-heading{
   color: var(--goldenYello-color);
+}
+
+.banner-third-heading {
+  margin-left: 340px;
 }
 
 .banner-content {
@@ -271,23 +281,23 @@ body a {
 }
 
 .slide1 {
-  background: linear-gradient(rgba(81, 80, 80, 0.5), rgba(81, 80, 80, 0.5)),
-    url(./assets/first-image.jpg) no-repeat center center/cover;
+  background: linear-gradient(rgba(97, 96, 96, 0.5), rgba(97, 96, 96, 0.5)),
+    url(./assets/first-image.png) no-repeat center center/cover;
 }
 
 .slide2 {
-  background: linear-gradient(rgba(81, 80, 80, 0.5), rgba(81, 80, 80, 0.5)),
-    url(./assets/second-image.jpg) no-repeat center center/cover;
+  background: linear-gradient(rgba(97, 96, 96, 0.5), rgba(97, 96, 96, 0.5)),
+    url(./assets/second-image.png) no-repeat center center/cover;
 }
 
 .slide3 {
-  background: linear-gradient(rgba(81, 80, 80, 0.5), rgba(81, 80, 80, 0.5)),
-    url(./assets/third-image.jpg) no-repeat center center/cover;
+  background: linear-gradient(rgba(97, 96, 96, 0.5), rgba(97, 96, 96, 0.5)),
+    url(./assets/third-image.png) no-repeat center center/cover;
 }
 
 .slide4 {
-  background: linear-gradient(rgba(81, 80, 80, 0.5), rgba(81, 80, 80, 0.5)),
-    url(./assets/first-image.jpg) no-repeat center center/cover;
+  background: linear-gradient(rgba(97, 96, 96, 0.5), rgba(97, 96, 96, 0.5)),
+    url(./assets/first-image.png) no-repeat center center/cover;
 }
 
 @keyframes slide {
@@ -321,11 +331,21 @@ body a {
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 50px 30px 20px 30px;
-  margin: 0 auto;
+  padding: 20px 30px;
+  margin: 120px auto 0;
   max-width: 1200px;
   text-align: center;
   font-size: 10px;
+}
+
+.scaleAnimation{
+  transform: scale(0.7);
+  transition: all 1s;
+}
+
+.scaleAnimation.animate {
+   opacity: 1;
+  transform: scale(1);
 }
 
 .card-section-heading {
@@ -334,7 +354,7 @@ body a {
   justify-content: center;
 }
 
-.card-section-heading h1 {
+.card-section-content {
   font-size: 60px;
   font-weight: 600;
   color: var(--blue3-color);
@@ -360,10 +380,10 @@ body a {
 
 .card {
     margin: 10px 0;
-    transition: all 0.3s;
     width: 100%;
     box-shadow: 0 0 20px var(--primary2-color);
     transition: all 1s;
+    border-radius: 10px;
 }
 
 .card:hover .card-section1-image{
@@ -373,7 +393,7 @@ body a {
 .card-section1 {
   overflow: hidden;
   height: 300px;
-  border-radius: 5px 5px 0 0;
+  border-radius: 10px 10px 0 0;
 }
 
 .card-section1-image {
@@ -390,7 +410,7 @@ body a {
   height: 130px;
   width: 100%;
   padding: 10px 15px 15px 15px;
-       border-radius: 0 0 5px 5px;
+  border-radius: 0 0 10px 10px;
 }
 
 .card-section2-content1 {
@@ -410,7 +430,7 @@ body a {
   text-align: center;
   padding: 10px 5px;
   font-size: 17px;
-  border-radius: 2px;
+  border-radius: 7px;
   transition: all 0.3s;
 }
 
@@ -426,6 +446,7 @@ body a {
   right: 30px;
   font-size: 17px;
   width: 320px;
+  border-radius: 5px;
   padding: 10px 0;
   background-color: var(--green-color);
   color: white;
@@ -459,6 +480,17 @@ body a {
   padding: 0 50px 50px 0;
   font-size: 16px;
   line-height: 24px;
+}
+
+.animated-logo{
+  opacity: 0;
+  transform: translateX(-25vw);
+  transition: all 1s;
+}
+
+.animated-logo.animate{
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .footer-section-box1-content2 {
@@ -575,7 +607,7 @@ body a {
 }
 
 .nav-container {
-  background-color: var(--secondary1-color);
+  background-color: var(--blue2-color);
 }
 
 .banner-content {
@@ -868,6 +900,11 @@ body a {
     font-size: 40px;
   }
 
+   .banner-first-heading,.banner-third-heading {
+  margin: 0px;
+}
+
+
   .wrapper-container {
     height: 300px;
   }
@@ -876,7 +913,7 @@ body a {
     flex-direction: column;
   }
 
-  .card-section-heading h1 {
+  .card-section-content {
     font-size: 33px;
   }
 
@@ -1095,7 +1132,15 @@ body a {
     font-size: 50px;
   }
 
-    .card-section-heading h1 {
+  .banner-first-heading {
+  margin-right: 180px;
+}
+
+.banner-third-heading {
+  margin-left: 180px;
+}
+
+    .card-section-content {
     font-size: 44px;
   }
 
@@ -1249,7 +1294,7 @@ body a {
     padding: 14px 16px;
   }
 
-   .card-section-heading h1 {
+   .card-section-content {
     font-size: 48px;
   }
 
@@ -1315,7 +1360,7 @@ body a {
     max-width: 1000px;
   }
 
-    .card-section-heading h1 {
+    .card-section-content {
     font-size: 52px;
   }
 

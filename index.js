@@ -1,4 +1,4 @@
-import { productsList, itemCount } from "./products.js";
+import { productsList, itemCount, observer } from "./products.js";
 
 const container = document.getElementById("product-container");
 const message = document.querySelector(".show-message");
@@ -12,7 +12,7 @@ console.log(selectedProducts);
 // creating carts on home page
 productsList.forEach((item) => {
   const card = document.createElement("div");
-  card.classList.add("card", `card${item.id}`);
+  card.classList.add("card", `card${item.id}`, "cardScaleAnimation");
 
   card.innerHTML = `
     <div class="card-section1">
@@ -73,3 +73,11 @@ container.addEventListener("click", function (event) {
     }, 3000);
   }
 });
+
+// for animation
+
+const animateHeading = document.querySelectorAll(".scaleAnimation");
+const animateLogo = document.querySelectorAll(".animated-logo");
+
+animateHeading.forEach((heading) => observer.observe(heading));
+animateLogo.forEach((logo) => observer.observe(logo));

@@ -100,3 +100,18 @@ export function hideLoad() {
   spinContainer.style.visibility = "hidden";
   spinContainer.style.opacity = "0";
 }
+
+export const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("animate");
+      } else {
+        entry.target.classList.remove("animate");
+      }
+    });
+  },
+  {
+    threshold: 0.3,
+  }
+);
