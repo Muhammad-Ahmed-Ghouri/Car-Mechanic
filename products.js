@@ -1,7 +1,7 @@
 const countELements = document.querySelectorAll(".item-count");
 const hamburger = document.getElementById("hamburger-navbar");
 const hamburgerIcon = document.querySelector(".hamburger-container");
-const closeNav = document.getElementById("close-image");
+const spinContainer = document.querySelectorAll(".cart-update-loader");
 
 export const productsList = [
   {
@@ -84,8 +84,6 @@ export function itemCount(selectedProducts) {
     }
   });
 }
-
-const spinContainer = document.querySelectorAll(".cart-update-loader");
 
 export function spinLoad() {
   spinContainer.forEach((loader) => {
