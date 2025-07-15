@@ -1,11 +1,14 @@
 import { itemCount, spinLoad, hideLoad, observer } from "./products.js";
 
 const itemsCountText = document.querySelector(".items-count-text");
-const cartsContainer = document.querySelector(".carts-section1");
 const emptyCart = document.querySelector(".no-cards");
+const cartsContainer = document.querySelector(".carts-section1");
 const productsQuantity = document.querySelector(".content1-text2");
 const productsSubtotal = document.querySelector(".content2-text2");
 const customerTotal = document.querySelector(".content4-text2");
+const animateHeading = document.querySelectorAll(".scaleAnimation");
+const animateLogo = document.querySelectorAll(".animated-logo");
+const checkoutButton = document.getElementById("checkout");
 
 const selectedProducts = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -17,6 +20,12 @@ const payLoad = {
 };
 
 localStorage.setItem("cart", JSON.stringify(selectedProducts));
+
+if (selectedProducts.length != 0) {
+  checkoutButton.style.pointerEvents = "auto";
+  checkoutButton.style.cursor = "pointer";
+  checkoutButton.style.backgroundColor = "#2e72cc";
+}
 
 function itemsCountTextUpdate(selectedProducts) {
   itemsCountText.innerHTML = `<strong>${selectedProducts} item </strong> in your cart.`;
@@ -98,7 +107,7 @@ function cartSummary(selectedProducts) {
 }
 
 cartSummary(selectedProducts);
-localStorage.setItem("billSummary", JSON.stringify(payLoad));
+localStorage.setItem("orderSummary", JSON.stringify(payLoad));
 
 console.log(payLoad);
 
@@ -120,9 +129,10 @@ function removeProduct(id) {
   localStorage.setItem("cart", JSON.stringify(selectedProducts));
   cartSummary(selectedProducts);
   console.log(payLoad);
-  localStorage.setItem("billSummary", JSON.stringify(payLoad));
+  localStorage.setItem("orderSummary", JSON.stringify(payLoad));
 }
 
+// when click on delete button
 document.addEventListener("click", (e) => {
   const deleteButton = e.target.closest(".cart-content1-button");
   if (deleteButton) {
@@ -134,6 +144,16 @@ document.addEventListener("click", (e) => {
 
       if (selectedProducts.length === 0) {
         emptyCart.style.display = "flex";
+      }
+
+      if (selectedProducts.length != 0) {
+        checkoutButton.style.pointerEvents = "auto";
+        checkoutButton.style.cursor = "pointer";
+        checkoutButton.style.backgroundColor = "#2e72cc";
+      } else {
+        checkoutButton.style.pointerEvents = "none";
+        checkoutButton.style.cursor = "none";
+        checkoutButton.style.backgroundColor = "#cbcbcb";
       }
     }, 2000);
   }
@@ -166,7 +186,7 @@ document.addEventListener("click", (e) => {
         // set data in web browser
         localStorage.setItem("cart", JSON.stringify(selectedProducts));
         cartSummary(selectedProducts);
-        localStorage.setItem("billSummary", JSON.stringify(payLoad));
+        localStorage.setItem("orderSummary", JSON.stringify(payLoad));
         console.log(payLoad);
         hideLoad();
       }, 2000);
@@ -201,7 +221,7 @@ document.addEventListener("click", (e) => {
         // set data in web browser
         localStorage.setItem("cart", JSON.stringify(selectedProducts));
         cartSummary(selectedProducts);
-        localStorage.setItem("billSummary", JSON.stringify(payLoad));
+        localStorage.setItem("orderSummary", JSON.stringify(payLoad));
         console.log(payLoad);
         hideLoad();
       }, 2000);
@@ -233,7 +253,7 @@ document.addEventListener("input", (e) => {
         // set data in web browser
         localStorage.setItem("cart", JSON.stringify(selectedProducts));
         cartSummary(selectedProducts);
-        localStorage.setItem("billSummary", JSON.stringify(payLoad));
+        localStorage.setItem("orderSummary", JSON.stringify(payLoad));
         console.log(payLoad);
       }
 
@@ -243,9 +263,6 @@ document.addEventListener("input", (e) => {
 });
 
 // for animatioon
-
-const animateHeading = document.querySelectorAll(".scaleAnimation");
-const animateLogo = document.querySelectorAll(".animated-logo");
 
 animateHeading.forEach((heading) => observer.observe(heading));
 animateLogo.forEach((logo) => observer.observe(logo));
