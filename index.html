@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Asap%3A400%2C400i%2C500%2C500i%2C600%2C600i%2C700%2C700i%7CRoboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto%20Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&subset=latin%2Clatin-ext&display=swap" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
 <body>
@@ -60,28 +60,20 @@
       </nav>
 
       <div class="hamburger-nav-container">
-      <nav id="hamburger-navbar">
-        <ul>
-          <div class="hamburger-nav-item">
-            <li><a class="hamburger-nav-li" href="/index.html">HOME</a></li>
-          </div>
-          <div class="hamburger-nav-item">
-            <li>
+        <nav id="hamburger-navbar">
+          <ul>
+            <li class="hamburger-nav-item"><a class="hamburger-nav-li" href="/index.html">HOME</a></li>
+            <li class="hamburger-nav-item">
               <a class="hamburger-nav-li" href="/about.html">ABOUT US</a>
             </li>
-          </div>
-          <div class="hamburger-nav-item">
-            <li>
+            <li class="hamburger-nav-item">
               <a class="hamburger-nav-li" href="/service.html">SERVICES</a>
             </li>
-          </div>
-          <div class="hamburger-nav-item">
-            <li>
+            <li class="hamburger-nav-item">
               <a class="hamburger-nav-li" href="/contact.html">CONTACT US</a>
             </li>
-          </div>
-        </ul>
-      </nav>
+          </ul>
+        </nav>
       </div>
 
       <a href="./cart.html" class="cart-icon-container">
@@ -105,14 +97,15 @@
     </div>
   </div>
 
-      <div class="card-section-header scaleAnimation">
-        <div class="card-section-heading">
-          <h1 class="card-section-content">Stay Charged. Keep Moving.</h1>
-        </div>
-        <p>
-          Power your vehicle with trusted batteries built for every journey. No delays, no dead starts — just smooth, reliable performance wherever you go.
-        </p>
-      </div>
+  <div class="card-section-header scaleAnimation" id="shopping-cards">
+    <div class="card-section-heading">
+      <h1 class="card-section-content">Stay Charged. Keep Moving.</h1>
+    </div>
+    <p>
+      Power your machines with trusted batteries built for every journey. No delays, no dead starts — just smooth,
+      reliable performance wherever you go.
+    </p>
+  </div>
 
   <section class="card-section">
     <div class="cards" id="product-container">
@@ -222,7 +215,7 @@
 
   <script type="module" src="./index.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-  
+
 </body>
 
 </html>

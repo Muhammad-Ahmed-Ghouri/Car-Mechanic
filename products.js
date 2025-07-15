@@ -85,16 +85,20 @@ export function itemCount(selectedProducts) {
   });
 }
 
-const spinContainer = document.querySelector(".cart-update-loader");
+const spinContainer = document.querySelectorAll(".cart-update-loader");
 
 export function spinLoad() {
-  spinContainer.style.visibility = "visible";
-  spinContainer.style.opacity = "1";
+  spinContainer.forEach((loader) => {
+    loader.style.visibility = "visible";
+    loader.style.opacity = "1";
+  });
 }
 
 export function hideLoad() {
-  spinContainer.style.visibility = "hidden";
-  spinContainer.style.opacity = "0";
+  spinContainer.forEach((loader) => {
+    loader.style.visibility = "hidden";
+    loader.style.opacity = "0";
+  });
 }
 
 export const observer = new IntersectionObserver(

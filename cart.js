@@ -2,15 +2,21 @@ import { itemCount, spinLoad, hideLoad, observer } from "./products.js";
 
 const itemsCountText = document.querySelector(".items-count-text");
 const cartsContainer = document.querySelector(".carts-section1");
-const selectedProducts = JSON.parse(localStorage.getItem("cart"));
+const emptyCart = document.querySelector(".no-cards");
+const productsQuantity = document.querySelector(".content1-text2");
+const productsSubtotal = document.querySelector(".content2-text2");
+const customerTotal = document.querySelector(".content4-text2");
 
-const finalCartsSummary = [
-  { totalQuantity: 0, subtotalAmount: 0, finalAmount: 0 },
-];
+const selectedProducts = JSON.parse(localStorage.getItem("cart")) || [];
+
+const payLoad = {
+  totalItems: 0,
+  itemsSubtotal: 0,
+  totalAmount: 0,
+  items: selectedProducts,
+};
 
 localStorage.setItem("cart", JSON.stringify(selectedProducts));
-
-console.log(selectedProducts);
 
 function itemsCountTextUpdate(selectedProducts) {
   itemsCountText.innerHTML = `<strong>${selectedProducts} item </strong> in your cart.`;
@@ -21,11 +27,12 @@ itemsCountTextUpdate(selectedProducts.length);
 itemCount(selectedProducts.length);
 
 // creating carts on cart summary page
-selectedProducts.forEach((item) => {
-  const carts = document.createElement("div");
-  carts.classList.add("carts-content1", `cart${item.id}`);
+if (selectedProducts.length > 0) {
+  selectedProducts.forEach((item) => {
+    const carts = document.createElement("div");
+    carts.classList.add("carts-content1", `cart${item.id}`);
 
-  carts.innerHTML = `
+    carts.innerHTML = `
               <div class="cart">
 
               <div class="cart-content1">
@@ -48,8 +55,8 @@ selectedProducts.forEach((item) => {
                       item.id
                     }" src="./assets/minus-sign.png" alt="" class="quantity-subtract">
                     <input name="quantity" data-id="${item.id}" value="${
-    item.quantity
-  }" class="quantity-calculator-field" type="number">
+      item.quantity
+    }" class="quantity-calculator-field" type="number">
                     <img data-id="${
                       item.id
                     }" src="./assets/plus-sign.png" alt="" class="quantity-addition">
@@ -64,8 +71,36 @@ selectedProducts.forEach((item) => {
               </div>
 
           </div>`;
-  cartsContainer.appendChild(carts);
-});
+    cartsContainer.appendChild(carts);
+  });
+} else {
+  emptyCart.style.display = "flex";
+}
+
+// for cart summary
+
+function cartSummary(selectedProducts) {
+  payLoad.totalItems = 0;
+  payLoad.itemsSubtotal = 0;
+  payLoad.totalAmount = 0;
+
+  selectedProducts.forEach((product) => {
+    payLoad.totalItems += product.quantity;
+    payLoad.itemsSubtotal += product.subtotal;
+    payLoad.totalAmount += product.subtotal;
+  });
+
+  productsQuantity.textContent = payLoad.totalItems;
+  productsSubtotal.textContent = `PKR ${payLoad.itemsSubtotal}`;
+  customerTotal.textContent = `PKR ${payLoad.totalAmount}`;
+
+  localStorage.setItem("finalSummary", JSON.stringify(payLoad));
+}
+
+cartSummary(selectedProducts);
+localStorage.setItem("billSummary", JSON.stringify(payLoad));
+
+console.log(payLoad);
 
 function removeProduct(id) {
   const index = selectedProducts.findIndex((product) => {
@@ -83,6 +118,9 @@ function removeProduct(id) {
   itemCount(selectedProducts.length);
 
   localStorage.setItem("cart", JSON.stringify(selectedProducts));
+  cartSummary(selectedProducts);
+  console.log(payLoad);
+  localStorage.setItem("billSummary", JSON.stringify(payLoad));
 }
 
 document.addEventListener("click", (e) => {
@@ -94,10 +132,10 @@ document.addEventListener("click", (e) => {
       removeProduct(id);
       hideLoad();
 
-      // render cart summary
-      renderCart();
+      if (selectedProducts.length === 0) {
+        emptyCart.style.display = "flex";
+      }
     }, 2000);
-    console.log(selectedProducts);
   }
 
   // when click on plus icon
@@ -127,12 +165,11 @@ document.addEventListener("click", (e) => {
 
         // set data in web browser
         localStorage.setItem("cart", JSON.stringify(selectedProducts));
+        cartSummary(selectedProducts);
+        localStorage.setItem("billSummary", JSON.stringify(payLoad));
+        console.log(payLoad);
         hideLoad();
-
-        // render cart summary
-        renderCart();
       }, 2000);
-      console.log(selectedProducts);
     }
   }
 
@@ -163,11 +200,10 @@ document.addEventListener("click", (e) => {
 
         // set data in web browser
         localStorage.setItem("cart", JSON.stringify(selectedProducts));
-
+        cartSummary(selectedProducts);
+        localStorage.setItem("billSummary", JSON.stringify(payLoad));
+        console.log(payLoad);
         hideLoad();
-
-        // render cart summary
-        renderCart();
       }, 2000);
       console.log(selectedProducts);
     }
@@ -196,37 +232,15 @@ document.addEventListener("input", (e) => {
 
         // set data in web browser
         localStorage.setItem("cart", JSON.stringify(selectedProducts));
+        cartSummary(selectedProducts);
+        localStorage.setItem("billSummary", JSON.stringify(payLoad));
+        console.log(payLoad);
       }
 
       hideLoad();
-
-      // render cart summary
-      renderCart();
     }, 2000);
-    console.log(selectedProducts);
   }
 });
-
-// creating carts summary
-
-function renderCart() {
-  const finalData = JSON.parse(localStorage.getItem("cart"));
-  const productsQuantity = document.querySelector(".content1-text2");
-  const productsSubtotal = document.querySelector(".content2-text2");
-  const customerTotal = document.querySelector(".content4-text2");
-
-  const index = 0;
-
-  let product = finalData[index];
-  finalCartsSummary[index].totalQuantity += product.quantity;
-  finalCartsSummary[index].subtotalAmount += product.subtotal;
-  finalCartsSummary[index].finalAmount += product.subtotal;
-
-  productsQuantity.textContent = finalCartsSummary[index].totalQuantity;
-  productsSubtotal.textContent = finalCartsSummary[index].subtotalAmount;
-  customerTotal.textContent = finalCartsSummary[index].finalAmount;
-  console.log(finalCartsSummary);
-}
 
 // for animatioon
 

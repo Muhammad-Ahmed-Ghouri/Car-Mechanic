@@ -58,7 +58,6 @@ function addItems(event) {
   localStorage.setItem("cart", JSON.stringify(selectedProducts));
   // counting items which have selected
   itemCount(selectedProducts.length);
-  console.log(selectedProducts);
 }
 
 container.addEventListener("click", function (event) {

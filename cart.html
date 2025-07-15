@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Carclinic4u - Cart</title>
-   <link rel="icon" type="image/x-icon" href="./assets/white-logo.png">
+  <link rel="icon" type="image/x-icon" href="./assets/white-logo.png">
   <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Asap%3A400%2C400i%2C500%2C500i%2C600%2C600i%2C700%2C700i%7CRoboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto%20Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&subset=latin%2Clatin-ext&display=swap" />
@@ -59,28 +59,20 @@
       </nav>
 
       <div class="hamburger-nav-container">
-      <nav id="hamburger-navbar">
-        <ul>
-          <div class="hamburger-nav-item">
-            <li><a class="hamburger-nav-li" href="/index.html">HOME</a></li>
-          </div>
-          <div class="hamburger-nav-item">
-            <li>
+        <nav id="hamburger-navbar">
+          <ul>
+            <li class="hamburger-nav-item"><a class="hamburger-nav-li" href="/index.html">HOME</a></li>
+            <li class="hamburger-nav-item">
               <a class="hamburger-nav-li" href="/about.html">ABOUT US</a>
             </li>
-          </div>
-          <div class="hamburger-nav-item">
-            <li>
+            <li class="hamburger-nav-item">
               <a class="hamburger-nav-li" href="/service.html">SERVICES</a>
             </li>
-          </div>
-          <div class="hamburger-nav-item">
-            <li>
+            <li class="hamburger-nav-item">
               <a class="hamburger-nav-li" href="/contact.html">CONTACT US</a>
             </li>
-          </div>
-        </ul>
-      </nav>
+          </ul>
+        </nav>
       </div>
 
       <a href="./cart.html" class="cart-icon-container">
@@ -99,29 +91,39 @@
     <div class="carts-section">
 
       <div class="carts-section1">
-        <div class="cart-update-loader">
+        <div class="cart-update-loader" id="section1-loader">
           <div class="update-loader-spin"></div>
         </div>
         <!-- carts will be placed here -->
+        <div class="no-cards">
+          <h3 class="no-cards-heading">No items in your cart.</h3>
+          <p class="no-cards-text">Click "Add Product" to start.</p>
+          <button class="no-cards-btn">
+            <a href="/index.html#shopping-cards">Add Product</a>
+          </button>
+        </div>
       </div>
       <div class="carts-section2">
+        <div class="cart-update-loader" id="section2-loader">
+          <div class="update-loader-spin"></div>
+        </div>
         <div class="price-summary">
           <h4 class="price-summary-heading">Price Summary</h4>
           <div class="price-summary-content1">
             <p class="content1-text1">Total Items:</p>
-            <p class="content1-text2">10</p>
+            <p class="content1-text2"></p>
           </div>
           <div class="price-summary-content2">
             <p class="content2-text1">Items Subtotal:</p>
-            <p class="content2-text2">10 PKR</p>
+            <p class="content2-text2"></p>
           </div>
           <div class="price-summary-content3">
             <p class="content3-text1">Delivery:</p>
-            <p class="content3-text2">10 PKR</p>
+            <p class="content3-text2">PKR 0</p>
           </div>
           <div class="price-summary-content4">
             <p class="content4-text1"><strong>Customer Total:</strong></p>
-            <p class="content4-text2">1000 PKR</p>
+            <p class="content4-text2"></p>
           </div>
           <div class="check-out-btn">
             <a href="#" class="check-out-btn-text">CHECKOUT</a>
