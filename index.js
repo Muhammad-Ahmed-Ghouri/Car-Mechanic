@@ -62,10 +62,24 @@ function addItems(event) {
 
 container.addEventListener("click", function (event) {
   if (event.target.classList.contains("card-section2-btn")) {
-    event.preventDefault(); // stop anchor default action
-    addItems(event); // pass the event to use dataset.id
+    event.preventDefault();
+
+    const cartId = event.target.dataset.id;
+    const product = productsList.find((item) => item.id === parseInt(cartId));
+
+    // Check if product is already added
+    const existingProduct = selectedProducts.find(
+      (item) => item.id === product.id
+    );
+
+    addItems(event); // safe to call after checking
+
     message.style.opacity = "1";
-    messageContent.innerHTML = `You have added ${selectedProducts.length} cart successfully!`;
+    if (existingProduct) {
+      messageContent.innerHTML = `You have added this cart ${existingProduct.quantity} times successfully!`;
+    } else {
+      messageContent.innerHTML = `You have added ${selectedProducts.length} carts successfully!`;
+    }
 
     setTimeout(() => {
       message.style.opacity = "0";
