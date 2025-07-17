@@ -1,4 +1,4 @@
-import { itemCount, spinLoad, hideLoad, observer } from "./products.js";
+import { itemCount, observer } from "./products.js";
 
 const itemsCountText = document.querySelector(".items-count-text");
 const emptyCart = document.querySelector(".no-cards");
@@ -13,6 +13,12 @@ const checkoutButton = document.getElementById("checkout");
 const selectedProducts = JSON.parse(localStorage.getItem("cart")) || [];
 
 const payLoad = {
+  fullName: "",
+  phone: "",
+  city: "",
+  area: "",
+  houseNo: "",
+  fullAddress: "",
   totalItems: 0,
   itemsSubtotal: 0,
   totalAmount: 0,
@@ -46,7 +52,7 @@ if (selectedProducts.length > 0) {
 
               <div class="cart-content1">
                 <div class="cart-content1-text">
-                  <p class="name-text">${item.product}</p>
+                  <p class="name-text">${item.name}</p>
                   <p class="price-text">PKR ${item.price}</p>
                 </div>
                 <button data-id="${item.id}" class="cart-content1-button">
@@ -137,59 +143,51 @@ document.addEventListener("click", (e) => {
   const deleteButton = e.target.closest(".cart-content1-button");
   if (deleteButton) {
     const id = parseInt(deleteButton.dataset.id);
-    spinLoad();
-    setTimeout(() => {
-      removeProduct(id);
-      hideLoad();
+    removeProduct(id);
 
-      if (selectedProducts.length === 0) {
-        emptyCart.style.display = "flex";
-      }
+    if (selectedProducts.length === 0) {
+      emptyCart.style.display = "flex";
+    }
 
-      if (selectedProducts.length != 0) {
-        checkoutButton.style.pointerEvents = "auto";
-        checkoutButton.style.cursor = "pointer";
-        checkoutButton.style.backgroundColor = "#2e72cc";
-      } else {
-        checkoutButton.style.pointerEvents = "none";
-        checkoutButton.style.cursor = "none";
-        checkoutButton.style.backgroundColor = "#cbcbcb";
-      }
-    }, 2000);
+    if (selectedProducts.length != 0) {
+      checkoutButton.style.pointerEvents = "auto";
+      checkoutButton.style.cursor = "pointer";
+      checkoutButton.style.backgroundColor = "#2e72cc";
+    } else {
+      checkoutButton.style.pointerEvents = "none";
+      checkoutButton.style.cursor = "none";
+      checkoutButton.style.backgroundColor = "#cbcbcb";
+    }
   }
 
   // when click on plus icon
   if (e.target.classList.contains("quantity-addition")) {
     const id = parseInt(e.target.dataset.id);
     const product = selectedProducts.find((product) => product.id === id);
-    spinLoad();
     if (product) {
-      setTimeout(() => {
-        product.quantity += 1;
+      product.quantity += 1;
 
-        // update input value
-        const input = e.target.parentElement.querySelector(
-          ".quantity-calculator-field"
-        );
-        input.value = product.quantity;
+      // update input value
+      const input = e.target.parentElement.querySelector(
+        ".quantity-calculator-field"
+      );
+      input.value = product.quantity;
 
-        // update subtotal value
-        const subtotal = e.target
-          .closest(".cart-content2")
-          .querySelector(".subtotal-price-text");
-        let price = product.quantity * product.price;
-        subtotal.textContent = `PKR ${price}`;
+      // update subtotal value
+      const subtotal = e.target
+        .closest(".cart-content2")
+        .querySelector(".subtotal-price-text");
+      let price = product.quantity * product.price;
+      subtotal.textContent = `PKR ${price}`;
 
-        // changing subtotal value from array
-        product.subtotal = price;
+      // changing subtotal value from array
+      product.subtotal = price;
 
-        // set data in web browser
-        localStorage.setItem("cart", JSON.stringify(selectedProducts));
-        cartSummary(selectedProducts);
-        localStorage.setItem("orderSummary", JSON.stringify(payLoad));
-        console.log(payLoad);
-        hideLoad();
-      }, 2000);
+      // set data in web browser
+      localStorage.setItem("cart", JSON.stringify(selectedProducts));
+      cartSummary(selectedProducts);
+      localStorage.setItem("orderSummary", JSON.stringify(payLoad));
+      console.log(payLoad);
     }
   }
 
@@ -197,34 +195,30 @@ document.addEventListener("click", (e) => {
   if (e.target.classList.contains("quantity-subtract")) {
     const id = parseInt(e.target.dataset.id);
     const product = selectedProducts.find((product) => product.id === id);
-    spinLoad();
     if (product && product.quantity > 1) {
-      setTimeout(() => {
-        product.quantity -= 1;
+      product.quantity -= 1;
 
-        // update input value
-        const input = e.target.parentElement.querySelector(
-          ".quantity-calculator-field"
-        );
-        input.value = product.quantity;
+      // update input value
+      const input = e.target.parentElement.querySelector(
+        ".quantity-calculator-field"
+      );
+      input.value = product.quantity;
 
-        // update subtotal value from UI
-        const subtotal = e.target
-          .closest(".cart-content2")
-          .querySelector(".subtotal-price-text");
-        let price = product.quantity * product.price;
-        subtotal.textContent = `PKR ${price}`;
+      // update subtotal value from UI
+      const subtotal = e.target
+        .closest(".cart-content2")
+        .querySelector(".subtotal-price-text");
+      let price = product.quantity * product.price;
+      subtotal.textContent = `PKR ${price}`;
 
-        // changing subtotal value from array
-        product.subtotal = price;
+      // changing subtotal value from array
+      product.subtotal = price;
 
-        // set data in web browser
-        localStorage.setItem("cart", JSON.stringify(selectedProducts));
-        cartSummary(selectedProducts);
-        localStorage.setItem("orderSummary", JSON.stringify(payLoad));
-        console.log(payLoad);
-        hideLoad();
-      }, 2000);
+      // set data in web browser
+      localStorage.setItem("cart", JSON.stringify(selectedProducts));
+      cartSummary(selectedProducts);
+      localStorage.setItem("orderSummary", JSON.stringify(payLoad));
+      console.log(payLoad);
       console.log(selectedProducts);
     }
   }
@@ -235,30 +229,24 @@ document.addEventListener("input", (e) => {
   if (e.target.classList.contains("quantity-calculator-field")) {
     const inputFieldId = parseInt(e.target.dataset.id);
     const product = selectedProducts.find((item) => item.id === inputFieldId);
-    spinLoad();
+    if (product) {
+      const subtotal = e.target
+        .closest(".cart-content2")
+        .querySelector(".subtotal-price-text");
 
-    setTimeout(() => {
-      if (product) {
-        const subtotal = e.target
-          .closest(".cart-content2")
-          .querySelector(".subtotal-price-text");
+      product.quantity = parseInt(e.target.value);
+      let price = product.price * product.quantity;
+      subtotal.textContent = `PKR ${price}`;
 
-        product.quantity = parseInt(e.target.value);
-        let price = product.price * product.quantity;
-        subtotal.textContent = `PKR ${price}`;
+      // changing subtotal value from array
+      product.subtotal = price;
 
-        // changing subtotal value from array
-        product.subtotal = price;
-
-        // set data in web browser
-        localStorage.setItem("cart", JSON.stringify(selectedProducts));
-        cartSummary(selectedProducts);
-        localStorage.setItem("orderSummary", JSON.stringify(payLoad));
-        console.log(payLoad);
-      }
-
-      hideLoad();
-    }, 2000);
+      // set data in web browser
+      localStorage.setItem("cart", JSON.stringify(selectedProducts));
+      cartSummary(selectedProducts);
+      localStorage.setItem("orderSummary", JSON.stringify(payLoad));
+      console.log(payLoad);
+    }
   }
 });
 

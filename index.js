@@ -16,10 +16,10 @@ productsList.forEach((item) => {
 
   card.innerHTML = `
     <div class="card-section1">
-        <img class="card-section1-image" src="${item.image}" alt="${item.product}" />
+        <img class="card-section1-image" src="${item.image}" alt="${item.name}" />
     </div>
     <div class="card-section2">
-      <p class="card-section2-content1">${item.product}</p>
+      <p class="card-section2-content1">${item.name}</p>
       <p class="card-section2-content3">PKR ${item.price}</p>
       <a href="#" data-id = "${item.id}" class="card-section2-btn">Add to cart</a>
     </div>
@@ -47,7 +47,7 @@ function addItems(event) {
   } else {
     selectedProducts.push({
       id: product.id,
-      product: product.product,
+      name: product.name,
       price: product.price,
       image: product.image,
       quantity: 1,
@@ -76,9 +76,9 @@ container.addEventListener("click", function (event) {
 
     message.style.opacity = "1";
     if (existingProduct) {
-      messageContent.innerHTML = `You have added this cart ${existingProduct.quantity} times successfully!`;
+      messageContent.innerHTML = `You have added this product ${existingProduct.quantity} times successfully!`;
     } else {
-      messageContent.innerHTML = `You have added ${selectedProducts.length} carts successfully!`;
+      messageContent.innerHTML = `You have added ${selectedProducts.length} product successfully!`;
     }
 
     setTimeout(() => {

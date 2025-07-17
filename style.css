@@ -685,15 +685,14 @@ body a {
   background-color: var(--primary-color);
   position: relative;
   width: 65%;
-  height: 400px;
   box-shadow: 1px 1px 10px var(--primary5-color);
   border-radius: 3px;
-  overflow: auto;
 }
 
 .carts-section2, .order-details {
   position: relative;
   width: 30%;
+  height: max-content;
   background: white;
   box-shadow: 1px 1px 10px var(--primary5-color);
   border-radius: 3px;
@@ -817,9 +816,12 @@ body a {
   font-size: 15px;
 }
 
-.check-out-btn, .order-complete-container {
+.price-summary-content4 {
+  border: none;
+}
+
+.check-out-btn{
   display: flex;
-  justify-content: end;
 }
 
 .content1-text1,
@@ -835,6 +837,7 @@ body a {
 
 .content4-text2 {
   color: var(--green-color);
+  font-weight: bold;
 }
 
 .check-out-btn-text , .order-complete-btn {
@@ -842,6 +845,8 @@ body a {
   background-color: var(--primary5-color);
   color: var(--primary-color);
   padding: 10px 20px;
+  width: 100%;
+  text-align: center;
   border: none;
   border-radius: 3px;
   cursor: pointer;
@@ -850,39 +855,6 @@ body a {
 
 .check-out-btn-text:hover , .order-complete-btn:hover{
   background-color: var(--blue2-color);
-}
-
-
-.cart-update-loader {
-  display: flex;
-  visibility: hidden;
-  opacity: 0;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  transition: all 1s;
-}
-
-.cart-update-loader::before {
-  content: "";
-  position: absolute;
-  background-color: var(--primary4-color);
-  opacity: 0.3;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
-.update-loader-spin {
-  width: 40px;
-  height: 40px;
-  border: 3px solid var(--primary-color);
-  border-top: 3px solid var(--blue1-color);
-  border-radius: 50%;
-  z-index: 1;
-  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
@@ -894,6 +866,88 @@ body a {
     transform: rotate(360deg);
   }
 }
+
+/* Delivery details page */
+
+.user-details{
+  padding: 20px;
+  height: 400px;
+}
+
+.user-details-content{
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-box{
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+  margin: 10px 0;
+}
+
+.details-field , .content-box-phone-field{
+  outline: none;
+  cursor: pointer;
+  margin: 5px;
+  width: -webkit-fill-available;
+  border: 1px solid var(--blue1-color);
+  border-radius: 3px;
+  padding: 10px 10px;
+  font-size: 15px;
+  color: var(--primary4-color);
+  transition: all 0.5s;
+}
+
+.content-box-phone-field{
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 5px;
+  padding: 0;
+}
+
+.content-box-phone-field p{
+  position: absolute;
+  padding: 0 0 0 10px;
+}
+
+.content-box-phone-field input{
+  margin: 0;
+  padding: 10px 50px;
+  border-radius: 3px;
+  font-size: 15px;
+  color: var(--primary4-color);
+  outline: none;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+}
+
+.content-box label, .content-box-phone-field label{
+  font-size: 15px;
+  margin: 5px;
+}
+
+.btn-box{
+  display: flex;
+  justify-content: end;
+}
+
+.user-details-btn{
+  background-color: var(--primary5-color);
+  padding: 10px 50px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-size: 15px;
+  transition: all 0.5s;
+}
+
+/* .user-details-btn:hover{
+  background-color: var(--blue2-color);
+} */
 
 @media only screen and (max-width: 600px) {
 
@@ -1137,7 +1191,7 @@ body a {
     margin: 0;
   }
 
-  .check-out-btn, .order-complete-container {
+  .check-out-btn {
     justify-content: unset;
     font-size: 14px;
   }
@@ -1147,6 +1201,34 @@ body a {
     text-align: center;
   }
 
+    /* details informqation page */
+
+  .user-details{
+    height: fit-content;
+  }
+
+  .user-details-content {
+    flex-direction: column;
+  }
+
+  .content-box {
+    width: 100%;
+    margin: 5px 0;
+}
+
+.content-box label, .content-box-phone-field label {
+    font-size: 12px;
+    margin: 5px 0 0 5px;
+}
+
+.details-field, .content-box-phone-field {
+    font-size: 12px;
+}
+
+.user-details-btn {
+    margin: 10px 5px;
+    width: 100%;
+}
 
 }
 
@@ -1357,6 +1439,31 @@ body a {
     border: none;
     margin: 0;
   }
+
+  /* details informqation page */
+
+  .user-details{
+    height: fit-content;
+  }
+
+  .user-details-content {
+    flex-direction: column;
+  }
+
+  .content-box {
+    width: 100%;
+    margin: 5px 0;
+}
+
+.content-box label, .content-box-phone-field label {
+    font-size: 12px;
+    margin: 5px 0 0 5px;
+}
+
+.details-field, .content-box-phone-field {
+    font-size: 12px;
+}
+
 }
 
 @media only screen and (min-width: 901px) and (max-width: 1200px) {
