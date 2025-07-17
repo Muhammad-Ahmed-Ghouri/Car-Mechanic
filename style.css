@@ -874,6 +874,14 @@ body a {
   height: 400px;
 }
 
+.order-information{
+  height: 400px;
+}
+
+.final-summary{
+  margin: 40px 20px;
+}
+
 .user-details-content{
   display: flex;
   justify-content: space-between;
@@ -945,9 +953,7 @@ body a {
   transition: all 0.5s;
 }
 
-/* .user-details-btn:hover{
-  background-color: var(--blue2-color);
-} */
+
 
 @media only screen and (max-width: 600px) {
 
