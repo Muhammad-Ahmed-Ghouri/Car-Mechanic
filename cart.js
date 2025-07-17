@@ -50,6 +50,11 @@ if (selectedProducts.length > 0) {
     carts.innerHTML = `
               <div class="cart">
 
+               <div class="cart-image">
+                <img src="${item.image}" alt="" class="product-image">
+               </div>
+
+               <div class="cart-content">
               <div class="cart-content1">
                 <div class="cart-content1-text">
                   <p class="name-text">${item.name}</p>
@@ -83,6 +88,7 @@ if (selectedProducts.length > 0) {
                     item.price * item.quantity
                   }</strong></p>
                 </div>
+              </div>
               </div>
 
           </div>`;

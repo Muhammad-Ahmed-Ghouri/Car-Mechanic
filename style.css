@@ -671,7 +671,7 @@ body a {
 
 .items-count-text {
   margin-bottom: 6px;
-  padding: 0 30px;
+  padding: 0 15px;
   color: var(--primary6-color);
 }
 
@@ -690,7 +690,7 @@ body a {
 }
 
 .carts-section1{
-  padding-bottom: 80px;
+  padding-bottom: 70px;
 }
 
 .carts-section2, .order-details {
@@ -703,11 +703,21 @@ body a {
 }
 
 .cart {
+  display: flex;
   border: 1px solid var(--secondary2-color);
-  margin: 10px;
+  margin: 15px 10px;
   padding: 5px 10px;
   border-radius: 3px;
   color: var(--secondary1-color);
+}
+
+.product-image{
+  height: 115px;
+  margin-right: 5px;
+}
+
+.cart-content{
+  width: 100%;
 }
 
 .cart-content1 {
@@ -769,7 +779,7 @@ body a {
 }
 
 .quantity-calculator img {
-  height: 20px;
+  height: 15px;
   cursor: pointer;
 }
 
@@ -778,6 +788,7 @@ body a {
   outline: none;
   color: var(--primary4-color);
   font-size: 17px;
+  width: 70px;
   text-align: center;
   cursor: pointer;
 }
@@ -803,7 +814,7 @@ body a {
 }
 
 .price-summary-heading {
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 500;
   margin-bottom: 30px;
 }
@@ -1172,7 +1183,6 @@ body a {
   }
 
   .cart-content2 {
-    margin-top: 10px;
     flex-direction: column;
     align-items: start;
   }
@@ -1248,6 +1258,10 @@ body a {
   .content-box {
     width: 100%;
     margin: 5px 0;
+}
+
+.product-image {
+    height: 100px;
 }
 
 .content-box label, .content-box-phone-field label {
