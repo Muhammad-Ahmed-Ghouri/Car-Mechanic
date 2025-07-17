@@ -89,7 +89,61 @@
   <div class="cart-summary">
     <div class="carts-section">
       <div class="user-details">
-    
+        <div class="user-details-content">
+
+          <div class="content-box">
+            <label for="myName">Customer Name</label>
+            <input type="text" id="myName" class="details-field" placeholder="Enter Your Name" autocomplete="name" />
+          </div>
+
+          <div class="content-box">
+            <label for="myPhone">Customer Mobile No</label>
+            <div class="content-box-phone-field">
+              <p>(+92)</p>
+              <input type="tel" id="myPhone" class="details-field" placeholder="300XXXXXXX" autocomplete="tel" />
+            </div>
+          </div>
+
+        </div>
+
+        <div class="user-details-content">
+
+          <div class="content-box">
+            <label for="myCity">City</label>
+            <select type="text" id="myCity" class="details-field">
+              <option value="karachi">Karachi</option>
+              <option value="lahore">Lahore</option>
+              <option value="hyderabad">Hyderabad</option>
+              <option value="islamabad">Islamabad</option>
+            </select>
+          </div>
+
+          <div class="content-box">
+            <label for="myArea">Area</label>
+            <input type="text" id="myArea" class="details-field" placeholder="Enter Your Area" autocomplete="name" />
+          </div>
+
+        </div>
+
+        <div class="user-details-content">
+
+          <div class="content-box">
+            <label for="destination-mark">Building / House No / Floor / Street</label>
+            <input type="text" id="destination-mark" class="details-field" placeholder="Enter Your Name"
+              autocomplete="name" />
+          </div>
+
+          <div class="content-box">
+            <label for="myAddress">Full Address</label>
+            <input type="text" id="myAddress" class="details-field" placeholder="Enter Your Full Address"
+              autocomplete="name" />
+          </div>
+
+        </div>
+
+        <div class="btn-box">
+          <button class="user-details-btn" disabled>Submit</button>
+        </div>
       </div>
       <div class="order-details">
         <div class="price-summary">
@@ -109,9 +163,6 @@
           <div class="price-summary-content4">
             <p class="content4-text1"><strong>Customer Total:</strong></p>
             <p class="content4-text2"></p>
-          </div>
-          <div class="order-complete-container">
-            <button class="order-complete-btn">ORDER COMPLETED</button>
           </div>
         </div>
       </div>
