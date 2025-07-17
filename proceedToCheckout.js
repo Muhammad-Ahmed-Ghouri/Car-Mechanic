@@ -15,7 +15,6 @@ const animateLogo = document.querySelectorAll(".animated-logo");
 const selectedProducts = JSON.parse(localStorage.getItem("cart"));
 
 const orderDetails = JSON.parse(localStorage.getItem("orderSummary"));
-console.log(orderDetails);
 
 if (orderDetails) {
   productsQuantity.textContent = orderDetails.totalItems;
@@ -94,7 +93,6 @@ submitBtn.addEventListener("click", async () => {
   orderDetails.area = areaField.value;
   orderDetails.houseNo = destinationMark.value;
   orderDetails.fullAddress = addressField.value;
-  console.log(orderDetails);
 
   try {
     const response = await post(orderDetails);

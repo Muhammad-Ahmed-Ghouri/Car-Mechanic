@@ -689,6 +689,10 @@ body a {
   border-radius: 3px;
 }
 
+.carts-section1{
+  padding-bottom: 80px;
+}
+
 .carts-section2, .order-details {
   position: relative;
   width: 30%;
@@ -892,6 +896,30 @@ body a {
   flex-direction: column;
   width: 48%;
   margin: 10px 0;
+}
+
+.addCarts{
+  display: flex;
+  width: 100%;
+    padding: 20px 10px;
+    position: absolute;
+    bottom: 0;
+}
+
+.addCarts-text{
+    color: var(--blue1-color);
+    padding: 10px 20px;
+    width: 100%;
+    text-align: center;
+    border: 2px solid var(--blue1-color);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.addCarts-text:hover{
+  background-color: var(--blue1-color);
+  color: var(--primary-color);
 }
 
 .details-field , .content-box-phone-field{

@@ -7,7 +7,6 @@ const messageContent = document.querySelector(".show-message-text");
 // products which have selected
 const selectedProducts = JSON.parse(localStorage.getItem("cart")) || [];
 itemCount(selectedProducts.length);
-console.log(selectedProducts);
 
 // creating carts on home page
 productsList.forEach((item) => {

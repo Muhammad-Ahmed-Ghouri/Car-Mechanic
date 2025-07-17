@@ -115,8 +115,6 @@ function cartSummary(selectedProducts) {
 cartSummary(selectedProducts);
 localStorage.setItem("orderSummary", JSON.stringify(payLoad));
 
-console.log(payLoad);
-
 function removeProduct(id) {
   const index = selectedProducts.findIndex((product) => {
     return product.id === id;
@@ -134,7 +132,7 @@ function removeProduct(id) {
 
   localStorage.setItem("cart", JSON.stringify(selectedProducts));
   cartSummary(selectedProducts);
-  console.log(payLoad);
+
   localStorage.setItem("orderSummary", JSON.stringify(payLoad));
 }
 
@@ -187,7 +185,6 @@ document.addEventListener("click", (e) => {
       localStorage.setItem("cart", JSON.stringify(selectedProducts));
       cartSummary(selectedProducts);
       localStorage.setItem("orderSummary", JSON.stringify(payLoad));
-      console.log(payLoad);
     }
   }
 
@@ -218,8 +215,6 @@ document.addEventListener("click", (e) => {
       localStorage.setItem("cart", JSON.stringify(selectedProducts));
       cartSummary(selectedProducts);
       localStorage.setItem("orderSummary", JSON.stringify(payLoad));
-      console.log(payLoad);
-      console.log(selectedProducts);
     }
   }
 });
@@ -245,7 +240,6 @@ document.addEventListener("input", (e) => {
       localStorage.setItem("cart", JSON.stringify(selectedProducts));
       cartSummary(selectedProducts);
       localStorage.setItem("orderSummary", JSON.stringify(payLoad));
-      console.log(payLoad);
     }
   }
 });
