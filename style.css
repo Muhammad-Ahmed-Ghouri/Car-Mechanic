@@ -468,8 +468,6 @@ body a {
 
 .footer-container {
   background-color: var(--blue1-color);
-  position: fixed;
-  bottom: 0;
   width: 100%;
 }
 
