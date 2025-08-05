@@ -50,9 +50,8 @@ body a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
+  margin: 0 50px;
   padding: 0 30px;
-  max-width: 1200px;
   font-size: 10px;
   font-weight: 500;
 }
@@ -147,8 +146,7 @@ body a {
 
 .hamburger-nav-container {
   position: relative;
-  max-width: 500px;
-  margin: 0 auto;
+  margin: 0 55px;
 }
 
 #hamburger-navbar {
@@ -495,7 +493,7 @@ body a {
 
 .animated-logo {
   opacity: 0;
-  transform: translateX(-25vw);
+  transform: translateX(-15vw);
   transition: all 1s;
 }
 
@@ -1005,6 +1003,10 @@ body a {
 
 @media only screen and (max-width: 600px) {
 
+  #navbar {
+    margin: 0;
+}
+
   .logo img {
     height: 45px;
   }
@@ -1293,9 +1295,6 @@ body a {
 }
 
 @media only screen and (min-width: 601px) and (max-width: 900px) {
-  #navbar {
-    max-width: 500px;
-  }
 
   #navbar ul {
     display: none;
@@ -1529,9 +1528,6 @@ body a {
 }
 
 @media only screen and (min-width: 901px) and (max-width: 1200px) {
-  #navbar {
-    max-width: 750px;
-  }
 
   .nav-li {
     padding: 14px 16px;
@@ -1598,10 +1594,6 @@ body a {
 }
 
 @media only screen and (min-width: 1201px) and (max-width: 1536px) {
-
-  #navbar {
-    max-width: 1000px;
-  }
 
   .card-section-content {
     font-size: 52px;
