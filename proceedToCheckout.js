@@ -155,4 +155,14 @@ async function submitOrder() {
     console.error("Submit failed:", error);
     alert("Something went wrong while sending data.");
   }
+
+  Swal.fire({
+    title: "Order Place!",
+    text: "Hey! Your order has placed successfully.",
+    icon: "success",
+  });
+
+  setTimeout(() => {
+    window.location.href = "index.html";
+  }, 3000);
 }
