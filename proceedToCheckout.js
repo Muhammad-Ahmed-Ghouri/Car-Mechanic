@@ -129,7 +129,9 @@ async function submitOrder() {
     fromEmailAddress: "noreply@carclinic4u.com",
     message: finalHmtl,
     subject: "New Order",
-    timezone: new Date().toUTCString(),
+    timezone: new Date().toLocaleString("en-PK", {
+      timeZone: "Asia/Karachi",
+    }),
   };
 
   try {
