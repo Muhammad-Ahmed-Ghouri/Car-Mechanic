@@ -1,5 +1,6 @@
 import { itemCount, observer } from "./products.js";
 
+// DOM elements
 const nameField = document.getElementById("myName");
 const phoneField = document.getElementById("myPhone");
 const cityField = document.getElementById("myCity");
@@ -12,10 +13,10 @@ const productsSubtotal = document.querySelector(".content2-text2");
 const customerTotal = document.querySelector(".content4-text2");
 const animateHeading = document.querySelectorAll(".scaleAnimation");
 const animateLogo = document.querySelectorAll(".animated-logo");
-const selectedProducts = JSON.parse(localStorage.getItem("cart"));
 
 const orderDetails = JSON.parse(localStorage.getItem("orderSummary"));
 
+// Summary content
 if (orderDetails) {
   productsQuantity.textContent = orderDetails.totalItems;
   productsSubtotal.textContent = `PKR ${orderDetails.itemsSubtotal}`;
@@ -23,13 +24,11 @@ if (orderDetails) {
   itemCount(orderDetails.items.length);
 }
 
-// for animatioon
-
+// Animations
 animateHeading.forEach((heading) => observer.observe(heading));
 animateLogo.forEach((logo) => observer.observe(logo));
 
-// check input values
-
+// check input fields
 function checkFields() {
   if (
     nameField.value.length >= 3 &&
@@ -47,6 +46,7 @@ function checkFields() {
   }
 }
 
+// input listeners
 nameField.addEventListener("input", checkFields);
 phoneField.addEventListener("input", function () {
   this.value = this.value.replace(/\D/g, "");
@@ -55,23 +55,41 @@ phoneField.addEventListener("input", function () {
   }
   checkFields();
 });
-
 areaField.addEventListener("input", checkFields);
 destinationMark.addEventListener("input", checkFields);
 addressField.addEventListener("input", checkFields);
 cityField.addEventListener("input", checkFields);
 
-// Post data to server
+// taking html file through fetch
+let finalHmtl = "";
+let htmlTemplate = "";
 
+fetch("emailTemplate.html")
+  .then((res) => res.text())
+  .then((htmlContent) => {
+    htmlTemplate = htmlContent;
+
+    // call submit listner after html is ready
+    submitBtn.addEventListener("click", submitOrder);
+  })
+  .catch((err) => {
+    console.error("Failed to load email template:", err);
+  });
+
+// Post function
 async function post(data) {
   try {
-    const response = await fetch("https://abc.com", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json; charset=UTF-8",
-      },
-    });
+    const response = await fetch(
+      "https://portaldemo-001-site6.ctempurl.com/api/Emails/SendWithSendGrid",
+      {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Auth-key": "BDtrViy2aobXEgjjhK13ObAZtrnnw4mkmorQJw9noJ4=",
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     if (!response.ok) {
       const errorData = await response.json();
@@ -86,27 +104,51 @@ async function post(data) {
   }
 }
 
-submitBtn.addEventListener("click", async () => {
-  orderDetails.fullName = nameField.value;
-  orderDetails.phone = phoneField.value;
-  orderDetails.city = cityField.value;
-  orderDetails.area = areaField.value;
-  orderDetails.houseNo = destinationMark.value;
-  orderDetails.fullAddress = addressField.value;
+// Submit order function
+async function submitOrder() {
+  const products = orderDetails.items;
+  let productsRows = "";
+
+  products.forEach((product) => {
+    productsRows += `
+    <tr>
+    <td style="border: 1px solid #ddd;">${product.name}</td>
+    <td style="border: 1px solid #ddd; text-align: center;">${
+      product.quantity
+    }</td>
+    <td style="border: 1px solid #ddd; text-align: right;">${product.price.toLocaleString()}</td>
+    <td style="border: 1px solid #ddd; text-align: right;">${product.subtotal.toLocaleString()}</td>
+    </tr>
+    `;
+  });
+
+  const data = {
+    CustomerName: nameField.value,
+    MobileNo: phoneField.value,
+    Address: addressField.value,
+    SubTotal: orderDetails.itemsSubtotal,
+    OrderRows: productsRows,
+  };
+
+  finalHmtl = htmlTemplate.replace(/{{(.*?)}}/g, (_, key) => data[key] || "");
+
+  const submitDetails = {
+    emailAddress: "muhammadahmed7274@gmail.com",
+    fromEmailAddress: "noreply@carclinic4u.com",
+    message: finalHmtl,
+    subject: "New Order",
+    timezone: new Date().toUTCString(),
+  };
 
   try {
-    const response = await post(orderDetails);
-    console.log("Server response:", response);
+    const response = await post(submitDetails);
 
-    // remove carts data
-
+    // Clear local storage
     localStorage.removeItem("orderSummary");
     localStorage.removeItem("cart");
-
-    // remove count from cart
     itemCount(0);
 
-    // Clear all input fields from UI
+    // Clear form
     nameField.value = "";
     phoneField.value = "";
     cityField.value = "";
@@ -114,7 +156,7 @@ submitBtn.addEventListener("click", async () => {
     destinationMark.value = "";
     addressField.value = "";
 
-    // Disable button again
+    // Disable submit again
     submitBtn.disabled = true;
     submitBtn.style.backgroundColor = "rgb(203, 199, 199)";
     checkFields();
@@ -122,4 +164,4 @@ submitBtn.addEventListener("click", async () => {
     console.error("Submit failed:", error);
     alert("Something went wrong while sending data.");
   }
-});
+}

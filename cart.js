@@ -13,12 +13,6 @@ const checkoutButton = document.getElementById("checkout");
 const selectedProducts = JSON.parse(localStorage.getItem("cart")) || [];
 
 const payLoad = {
-  fullName: "",
-  phone: "",
-  city: "",
-  area: "",
-  houseNo: "",
-  fullAddress: "",
   totalItems: 0,
   itemsSubtotal: 0,
   totalAmount: 0,
