@@ -3,9 +3,6 @@ import { itemCount, observer } from "./products.js";
 // DOM elements
 const nameField = document.getElementById("myName");
 const phoneField = document.getElementById("myPhone");
-const cityField = document.getElementById("myCity");
-const areaField = document.getElementById("myArea");
-const destinationMark = document.getElementById("destination-mark");
 const addressField = document.getElementById("myAddress");
 const submitBtn = document.querySelector(".user-details-btn");
 const productsQuantity = document.querySelector(".content1-text2");
@@ -33,8 +30,6 @@ function checkFields() {
   if (
     nameField.value.length >= 3 &&
     phoneField.value.length === 10 &&
-    areaField.value.length >= 3 &&
-    destinationMark.value.length >= 3 &&
     addressField.value.length >= 3
   ) {
     submitBtn.disabled = false;
@@ -55,10 +50,7 @@ phoneField.addEventListener("input", function () {
   }
   checkFields();
 });
-areaField.addEventListener("input", checkFields);
-destinationMark.addEventListener("input", checkFields);
 addressField.addEventListener("input", checkFields);
-cityField.addEventListener("input", checkFields);
 
 // taking html file through fetch
 let finalHmtl = "";
@@ -151,9 +143,6 @@ async function submitOrder() {
     // Clear form
     nameField.value = "";
     phoneField.value = "";
-    cityField.value = "";
-    areaField.value = "";
-    destinationMark.value = "";
     addressField.value = "";
 
     // Disable submit again

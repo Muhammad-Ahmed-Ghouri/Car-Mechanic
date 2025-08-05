@@ -632,6 +632,7 @@ body a {
   align-items: center;
   width: 100%;
   height: 100%;
+  margin: 20px 0;
 }
 
 .no-cards-heading {
@@ -836,6 +837,7 @@ body a {
 
 .price-summary-content4 {
   border: none;
+  margin-bottom: 0;
 }
 
 .check-out-btn {
@@ -891,15 +893,11 @@ body a {
 
 .user-details {
   padding: 20px;
-  height: 400px;
-}
-
-.order-information {
-  height: 400px;
+  height: max-content;
 }
 
 .final-summary {
-  margin: 40px 20px;
+  margin: 20px 20px;
 }
 
 .user-details-content {
@@ -912,6 +910,10 @@ body a {
   flex-direction: column;
   width: 48%;
   margin: 10px 0;
+}
+
+.address-content-box{
+  width: 100%;
 }
 
 .addCarts {
@@ -991,7 +993,7 @@ body a {
 .user-details-btn {
   background-color: var(--primary5-color);
   padding: 10px 50px;
-  margin: 10px 0;
+  margin: 10px 5px;
   border: none;
   border-radius: 3px;
   color: white;
